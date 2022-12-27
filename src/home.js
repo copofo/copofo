@@ -11,16 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
     .orderBy('ap')
     .onSnapshot(snapShot => {
 
-      if(snapShot){
+      
         const operations = snapShot.docs.map(doc => doc.data())
         addOperationToScreen(operations)
-      }
-      
 
+
+
+    
       snapShot.docChanges().forEach(home => {
-        
-        
 
+        
         if (home.type == 'removed') {
 
           console.log('removed')
@@ -33,12 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = 'home.html'
         }
 
-        if (home.type == 'added') {
-          window.location.reload = true;
-          console.log('added')
-          
-          
-        }
+
       })
     })
 })
@@ -228,7 +223,9 @@ function formatDate(date) {
 
 
 
-
+function reload() {
+  window.location.reload = true;
+}
 
 
 
