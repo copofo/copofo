@@ -6,20 +6,31 @@ const f = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  
+  showLoading()
   firebase.firestore()
     .collection('home')
     .orderBy('ap')
+    .get()
+    .then(snapShot => {
+      hideLoading();
+      const operations = snapShot.docs.map(doc => doc.data())
+      addOperationToScreen(operations)
+    })
+    .catch(erro => {
+      hideLoading();
+      console.log("Erro ao recuperar as operaçãoes!", erro)
+    })
     .onSnapshot(snapShot => {
-
       
-        const operations = snapShot.docs.map(doc => doc.data())
-        addOperationToScreen(operations)
-
-
-
     
       snapShot.docChanges().forEach(home => {
 
+        
+
+        if(home.type == "added"){
+          window.location.href = 'home.html'
+        }
         
         if (home.type == 'removed') {
 
