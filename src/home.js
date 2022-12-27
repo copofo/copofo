@@ -84,7 +84,7 @@ function addOperationToScreen(operation) {
 
 
   const p = document.getElementById('cont')
-  p.innerHTML = `Pendente: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
+  p.innerHTML = `Pendentes: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
 
   const orderList = document.getElementById('operation')
 
@@ -96,7 +96,7 @@ function addOperationToScreen(operation) {
 
     if(operation.ap){
       const ap = document.createElement('p')
-    ap.innerHTML = 'Ap: ' + operation.ap
+    ap.innerHTML = `<strong>Ap: ${operation.ap}<strong>`
     li.appendChild(ap)
 
     }
