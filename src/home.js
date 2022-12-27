@@ -8,26 +8,36 @@ const f = {
 document.addEventListener('DOMContentLoaded', () => {
   firebase.firestore()
     .collection('home')
+    .orderBy('ap')
     .onSnapshot(snapShot => {
+
+      if(snapShot){
+        const operations = snapShot.docs.map(doc => doc.data())
+        addOperationToScreen(operations)
+      }
+      
+
       snapShot.docChanges().forEach(home => {
+        
+        
+
         if (home.type == 'removed') {
-          const operations = snapShot.docs.map(doc => doc.data())
-          addOperationToScreen(operations)
+
           console.log('removed')
           window.location.href = 'home.html'
         }
 
         if (home.type == 'modified') {
-          const operations = snapShot.docs.map(doc => doc.data())
-          addOperationToScreen(operations)
+
           console.log('modified')
           window.location.href = 'home.html'
         }
 
         if (home.type == 'added') {
-          const operations = snapShot.docs.map(doc => doc.data())
-          addOperationToScreen(operations)
+          window.location.reload = true;
           console.log('added')
+          
+          
         }
       })
     })
