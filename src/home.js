@@ -5,7 +5,33 @@ const f = {
   op: () => document.getElementById('operation')
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  firebase.firestore()
+    .collection('home')
+    .onSnapshot(snapShot => {
+      snapShot.docChanges().forEach(home => {
+        if (home.type == 'removed') {
+          const operations = snapShot.docs.map(doc => doc.data())
+          addOperationToScreen(operations)
+          console.log('removed')
+          window.location.href = 'home.html'
+        }
 
+        if (home.type == 'modified') {
+          const operations = snapShot.docs.map(doc => doc.data())
+          addOperationToScreen(operations)
+          console.log('modified')
+          window.location.href = 'home.html'
+        }
+
+        if (home.type == 'added') {
+          const operations = snapShot.docs.map(doc => doc.data())
+          addOperationToScreen(operations)
+          console.log('added')
+        }
+      })
+    })
+})
 
 
 f.ps().addEventListener('touchstart', superUser)
@@ -41,11 +67,17 @@ function superUser() {
   })
 }
 
+/*
+
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
     findOperation(user);
   }
 })
+
+*/
+
+/*
 
 function findOperation(user) {
 
@@ -67,10 +99,14 @@ function findOperation(user) {
 
 }
 
+*/
+
+
 function addOperationToScreen(operation) {
 
   var pen = 0;
   var ent = 0;
+
 
   operation.forEach((v) => {
     if (v.status === 'Entregue') {
@@ -81,6 +117,7 @@ function addOperationToScreen(operation) {
       pen++;
     }
   })
+
 
 
   const p = document.getElementById('cont')
@@ -94,10 +131,10 @@ function addOperationToScreen(operation) {
 
     li.classList.add(operation.typeColor, "li-get");
 
-    if(operation.ap){
+    if (operation.ap) {
       const ap = document.createElement('p')
-    ap.innerHTML = `<strong>Ap: ${operation.ap}<strong>`
-    li.appendChild(ap)
+      ap.innerHTML = `<strong>Ap: ${operation.ap}<strong>`
+      li.appendChild(ap)
 
     }
 
