@@ -158,3 +158,8 @@ function addField() {
   
   
 }
+
+function fillPg(){
+  f.btnAdd().disabled = !f.pg().value ? true : false;
+  f.msgFillError().style.display = !f.pg().value ? 'block' : 'none';
+}
