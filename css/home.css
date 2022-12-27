@@ -52,7 +52,7 @@ li.receive:hover{
   border-bottom: 1.5em solid rgb(175, 000, 000);
   border-top: 1.5em solid rgb(175, 000, 000);
   color: white;
-  font-weight: bold;
+  
   background: rgba(000,000,200,0.5);
 }
 
@@ -68,7 +68,7 @@ li.deliver:hover{
   border-top: 1.5em solid rgb(000, 175, 000);
   height: 18em;
   color: white;
-  font-weight: bold;
+  
   background: rgba(000,000,200,0.5);
 }
 

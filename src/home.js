@@ -125,7 +125,7 @@ function addOperationToScreen(operation) {
 
     if (operation.dateIn) {
       const dateIn = document.createElement('p')
-      dateIn.innerHTML = "Recebimento: " + formatDate(operation.dateIn)
+      dateIn.innerHTML = "Recebimento: " + operation.dateIn
       li.appendChild(dateIn)
     }
 

@@ -9,11 +9,21 @@ const f = {
   nameOpIn: () => document.getElementById('nameOpIn'),
   receive: () => document.getElementById('receive'),
   deliver: () => document.getElementById('deliver'),
+  qtd: () => document.getElementById('qtd'),
 
   btnAdd: () => document.getElementById('btnAdd'),
-  msgFillError: ()=> document.getElementById('msg-fill-error'),
-  divOutros: ()=> document.getElementById('divOutros')
+  msgFillError: () => document.getElementById('msg-fill-error'),
+  msgError: () => document.getElementById('error'),
+  
+  btnMais: () => document.getElementById('btnMais'),
+  divNewField: () => document.getElementById('divNewField'),
+  newInputField: () => document.getElementById('newInputField'),
+  newLabelInputField: () => document.getElementById('newLabelInputField')
 }
+
+var newInputField = document.getElementById('newInputField')
+var description = document.getElementById('description')
+
 
 var currentUser;
 var userName = f.nameOpIn();
@@ -22,38 +32,38 @@ const hour = f.hourIn()
 const date = f.dateIn()
 const d = new Date()
 const hora = String(d.getHours()).padStart(2, '0')
-const min = String(d.getMinutes()).padStart(2,'0')
-      
+const min = String(d.getMinutes()).padStart(2, '0')
+
 const horaAtual = `${hora}:${min}`
-      hour.value = horaAtual
-      
+hour.value = horaAtual
+
 const dia = String(d.getDate()).padStart(2, '0')
 const mes = String(d.getMonth() + 1).padStart(2, '0')
 const ano = String(d.getFullYear())
-      
+
 const dataAtual = `${dia}/${mes}/${ano}`
-      date.value = dataAtual
+date.value = dataAtual
 
-window.addEventListener('DOMContentLoaded', ()=>{
-        
-        firebase.auth().onAuthStateChanged((user) =>{
-          if(user){
-            
-            currentUser = firebase.auth().currentUser;
-    
-    userName.value = currentUser.displayName;
-          } else{
-            alert('erro')
-          }
-          
-        })
-        
-        
-        
-      })
+window.addEventListener('DOMContentLoaded', () => {
 
-function voltar(){
-    window.location.href = 'home.html'
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+
+      currentUser = firebase.auth().currentUser;
+
+      userName.value = currentUser.displayName;
+    } else {
+      alert('erro')
+    }
+
+  })
+
+
+
+})
+
+function voltar() {
+  window.location.href = 'home.html'
 }
 
 var currentUser;
@@ -64,8 +74,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (currentUser == null) {
       window.location.href = '../index.html'
-    } else{
-        window.document.body.style.display = 'block'
+    } else {
+      window.document.body.style.display = 'block'
     }
 
 
@@ -81,33 +91,70 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
-      f.btnAdd().click();
+    f.btnAdd().click();
   }
 })
 
 
-function concluir(){
-  fillError();
-  const desc = f.description()
-  if(desc.value === 'outros'){
-    const input = document.createElement('input')
-    input.innerHTML = "deu bom"
-    //input.value = divOutros.value
-    f.divOutros().appendChild(input)
+function saveOperation() {
+  showLoading();
+  const operation = createOperation();
+
+  firebase.firestore()
+    .collection('home')
+    .add(operation)
+    .then(()=>{
+      hideLoading();
+      window.location.href = '../index.html'
+    })
+    .catch(()=>{
+      f.msgError().style.display = 'block'
+    })
+
+
+
+
+
 }
 
-function fillError(){
+function createOperation(){
+  return {
+    typeColor: f.receive().checked ? "receive" : "deliver",
+    ap: parseInt(f.ap().value),
+    name: f.name().value,
+    description: {
+      tipo: f.description().value,
+      qtd: parseInt(f.qtd().value)
+    },
+    pg: parseInt(f.pg().value),
+    dateIn: f.dateIn().value,
+    hourIn: f.hourIn().value,
+    nameOpIn: userName.value,
+    status: f.receive().checked ? "Aguardando Retirada" : "Entregue"
+  }
+}
+
+function fillError() {
   const name = f.name().value
   const ap = f.ap().value
   const pg = f.pg().value
   const desc = f.description().value
+  const qdt = f.qtd().value
+  f.msgFillError().style.display = !ap || !name || !pg || !desc || !qdt ? 'block' : 'none';
   
-  f.msgFillError().style.display = !ap || !name || !pg || !desc ? 'block' : 'none';
+  f.btnAdd().disabled = !ap || !name || !pg || !desc || !qdt ? true : false;
 }
 
-function onChangeDesc(){
-  
-  
+
+
+function addField() {
+  if (f.description().value == "Descrever ➔") {
+    f.divNewField().style.display = 'block'
+    description = newInputField
+    
     
   }
+
+  
+  
 }
