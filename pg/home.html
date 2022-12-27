@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body style="display: none;">
+
+
+  <div id="lbl"></div>
+
+  <header id="header">
+    <a id="logo" href="#">Home</a>
+    <nav id="nav">
+      <button type="button" id="btn-menu" aria-expanded="false" aria-controls="menu" aria-haspopup="true"
+        aria-label="Abrir Menu">
+        <span id="hamburger"></span>
+      </button>
+      <ul id="menu" role="menu">
+        <li>Entregues</li>
+        <li>Ocorrências</li>
+        <li onclick="superUser()" id="ps">SuperUser</li>
+        <li onclick="sair()">Sair</li>
+      </ul>
+    </nav>
+  </header>
+
+  <p id="cont"></p>
+
+  <ol id="operation">
+    
+   
+    
+  </ol>
+
+
+
+
+
+
+  <div id="msg-error" style="color: white; background-color: red;">
+
+  </div>
+
+  <button type="button" class="fab fixed bottom right" id="add" onclick="addEncomenda()">+</button>
+
+ 
+</body>
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+<script src="../src/init.js"></script>
+<!--Firebase Authentication-->
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+<!--Inicializando o app do Firebase em nosso projeto web-->
+
+<script src="../src/loading.js"></script>
+<script src="../src/currentUser.js"></script>
+<script src="../src/home.js"></script>
+<script src="../src/menu_home.js"></script>
+
+</html>

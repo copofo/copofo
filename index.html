@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body onload="checkLogin()">
+    <div id="lbl"></div>
+    <h1>TrioHome</h1>
+    <div class="centralize">
+
+        <form>
+            <div><label for="email">Email</label></div>
+            <input type="email" id="email">
+            <div class="error" id="msg-email-error">&uarr; Email é obrigatório / Email Inválido</div>
+
+            <div><label for="password">Senha</label></div>
+            <input type="password" type="number" id="password">
+            <div class="error" id="msg-password-error">&uarr; Senha é Obrigatória</div>
+
+            <div id="msgErrorLogin" class="error">testando</div>
+
+            <div class="centralize"><button type="button" id="btn" disabled onclick="login()">Entrar</button></div>
+        </form>
+    </div>
+
+
+    <div class="footer">
+        <p>&copy; Telles</p>
+    </div>
+
+
+    
+</body>
+
+
+
+<!--Firebase-->
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+<!--Firebase Authentication-->
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+
+<!--Inicializando o app do Firebase em nosso projeto web-->
+<script src="src/init.js"></script>
+
+<!--Demais scripts-->
+<script src="src/index.js"></script>
+<script src="src/validations.js"></script>
+<script src="src/loading.js"></script>
+</html>

@@ -1,0 +1,76 @@
+div.centralize{
+    height: 100%;
+    
+}
+
+input{
+    height: 2.5em;
+    margin-bottom: 1em;
+    outline: none;
+    width: 100%;
+    font-size: 100%;
+    font-weight: bold;
+    
+}
+
+input:focus{
+    background-color: #e0e0fd;
+    border-bottom: 0.2em solid blue;
+    
+}
+
+label{
+    color: var(--c8);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+button{
+    height: 2em;
+    width: 4em;
+    border-radius: 0.3em;
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 1em;
+}
+
+button:active{
+    background-image: radial-gradient(var(--c4), var(--c8));
+    color: white;
+    font-weight: bold;
+    height: 2.2em;
+    width: 4.2em;
+}
+
+button[disabled]{
+    background-image: radial-gradient(white,white);
+    font-weight: normal;
+    height: 2em;
+    width: 4em;
+    color: black;
+    opacity: 0.5;
+}
+
+
+
+h1{
+    margin-bottom: -2em;
+    text-align: center;
+    /* margin-top: 2em; */
+    color: white;
+    /* background-image: radial-gradient(var(--corA), var(--corE)); */
+    background-image: radial-gradient(var(--c3), var(--c7));
+    text-shadow: 0 0 0 0.2em black;
+}
+
+
+form{
+    border: 0.09em solid black;
+    padding: 1em;
+    background-color: var(--c2);
+    box-shadow: 0.5em 0.5em 0.5em hsla(0, 0%, 0%, 0.473);
+    border: none;
+    border-radius: 0.5em;
+}
+

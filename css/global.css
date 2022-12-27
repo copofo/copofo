@@ -1,0 +1,107 @@
+@charset 'UTF-8';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    
+    --c1: #CCCCFF;
+    --c2: #9999FF;
+    --c3: #6666FF;
+    --c4: #3333FF;
+    --c5: #0000FF;
+    --c6: #0000CC;
+    --c7: #000099;
+    --c8: #000066;
+
+}
+
+body {
+    background-color: #CCCCFF;
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+
+
+.centralize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+.loading label {
+    font-size: 2em;
+}
+
+button.fab {
+    width: 3.375em;
+    height: 3.375em;
+    border-radius: 3.125em;
+    border: none;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 0.125em 0.125em 0.125em gray;
+}
+
+button.fab.fixed {
+    position: fixed;
+}
+
+button.fab.bottom {
+    bottom: 1.5em;
+}
+
+button.fab.right {
+    right: 1.5em;
+}
+
+button.fab.left {
+    left: 1em;
+}
+
+button.fab.top {
+    top: 0.75em;
+}
+
+.h1Style{
+    
+    text-align: center;
+    color: white;
+    background-image: radial-gradient(var(--c3), var(--c7));
+    text-shadow: 0 0 0 0.2em black;
+}
+
+.error{
+    margin-top: -1em;
+    margin-bottom: 1em;
+    color: white;
+    background-image: radial-gradient(rgb(97, 33, 33), red);
+    padding: 0.4em;
+    display: none;
+}
+
+div.centralize{
+    height: 100%;
+}
+
+div.footer{
+    text-align: center;
+    color: var(--c2);
+    position: absolute;
+    width: 100%;
+    bottom: 3em;
+}

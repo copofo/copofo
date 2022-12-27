@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/master.css">
+
+</head>
+
+<body id="body" style="display: none;">
+
+
+    <div id="lbl"></div>
+    <h1 class="h1Style">Login Master</h1>
+
+    <div class="centralize1">
+        <form>
+            <div><label>Email</label></div>
+            <input type="email" name="email" id="email" value="" />
+            <div><label>Senha</label></div>
+            <input type="password" name="pw" id="pw" value="" />
+        </form>
+    </div>
+
+    <section class="centralize2">
+
+        <button type="button" id="rpw">Recuperar Senha</button>
+        <button type="button" id="cuser">Criar Usúario</button>
+        <button type="button" id="update">Update</button>
+        <button type="button" id="ruser">Excluir Usuário Senha</button>
+
+    </section>
+
+    <button type="button" onclick="voltar()" class="fab fixed bottom">Voltar</button>
+</body>
+
+<!--Firebase-->
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+<!--Firebase Authentication-->
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+
+<!--Inicializando o app do Firebase em nosso projeto web-->
+<script src="../src/init.js"></script>
+
+
+
+
+<script src="../src/loading.js"></script>
+<script src="../src/rascunho.js"></script>
+
+
+
+</html>

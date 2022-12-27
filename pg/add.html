@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Encomenda</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/add.css">
+</head>
+<body style="display: none;">
+    
+    <h1 class="h1Style">Receber Encomenda</h1>
+
+    <div id="btnVoltar"><button type="button" class="fab"  onclick="voltar()">Voltar</button></div>
+
+    <div class="divCentralize">
+        <form>
+            <div><label for="ap"></label>Ap:</div>
+            <input type="number" id="ap">
+
+            <div><label for="name"></label>Nome:</div>
+            <input type="text" id="name">
+
+            <div >
+                <label for="description">Descrição:</label>
+                
+                <select name="" id="description">
+                    <option >Caixa</option>
+                    <option >Pacote</option>
+                    <option >Envelope</option>
+                    <option >Outros</option>
+                </select>
+            </div>
+
+            <div><label for="pg"></label>Página:</div>
+            <input type="number" id="pg">
+
+            <div><label for="dateIn"></label>Data do Recebimento</div>
+            <input type="text" id="dateIn" disabled>
+
+            <div><label for="hourIn"></label>Horo do Recebimento</div>
+            <input type="text" id="hourIn" disabled>
+
+            <div><label for="nameOpIn"></label>Nome do Operador</div>
+            <input type="text" id="nameOpIn" disabled>
+
+            <div><label for="status"></label>Status</div>
+
+            <label for="receive">Pendente</label><input type="radio" name="status" id="receive" checked>
+            <label for="deliver">Entregue</label><input type="radio" name="status" id="deliver" disabled>
+
+            
+            
+
+
+            
+        </form>
+
+        
+    </div>
+
+    <div class="divCentralize"><button type="button" id="btnAdd" onclick="concluir()">Concluir</button></div>
+    
+</body>
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+<!--Firebase Authentication-->
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+
+<!--Inicializando o app do Firebase em nosso projeto web-->
+<script src="../src/init.js"></script>
+<script src="../src/loading.js"></script>
+    <script src="../src/add.js"></script>
+</html>
