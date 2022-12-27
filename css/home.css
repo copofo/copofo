@@ -10,12 +10,7 @@ a {
     font-family: sans-serif;
 }
 
-li:hover {
-    background: rgba(0,0,0,0.15);
-    color: white;
-    font-weight: bold;
-    
-}
+
 
 #logo {
     font-size: 1.5em;
@@ -48,11 +43,33 @@ li:hover {
 }
 
 li.receive{
-    border-left: 1.5em solid red;
+    border-left: 2.5em solid red;
+}
+
+li.receive:hover{
+  width: 95%;
+  border-right: 2.5em solid red;
+  border-bottom: 1.5em solid rgb(175, 000, 000);
+  border-top: 1.5em solid rgb(175, 000, 000);
+  color: white;
+  font-weight: bold;
+  background: rgba(000,000,200,0.5);
 }
 
 li.deliver{
-    border-left: 1.5em solid green;
+    border-left: 2.5em solid green;
+}
+
+li.deliver:hover{
+  border-right: 2.5em solid green;
+  
+  width: 95%;
+  border-bottom: 1.5em solid rgb(000, 175, 000);
+  border-top: 1.5em solid rgb(000, 175, 000);
+  height: 18em;
+  color: white;
+  font-weight: bold;
+  background: rgba(000,000,200,0.5);
 }
 
 #cont{
@@ -65,9 +82,9 @@ li.deliver{
 
 @media (min-width: 600px){
     .li-get {
-        border: 0.09em solid black;
-        width: 14em;
-        height: 14em;
+        border: 0.10em solid black;
+        width: 16em;
+        height: 15em;
         margin-bottom: 0.50em;
         background-color: white;
         padding: 0.50em;
@@ -173,8 +190,8 @@ li.deliver{
 
     .li-get {
         border: 0.09em solid black;
-        width: 80%;
-        height: 14em;
+        width: 90%;
+        height: 15em;
         margin-bottom: 0.50em;
         background-color: white;
         padding: 0.50em;
