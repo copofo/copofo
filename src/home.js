@@ -5,50 +5,35 @@ const f = {
   op: () => document.getElementById('operation')
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
-  
-  showLoading()
-  firebase.firestore()
+      firebase.firestore()
     .collection('home')
-    .orderBy('ap')
-    .get()
-    .then(snapShot => {
-      hideLoading();
-      const operations = snapShot.docs.map(doc => doc.data())
-      addOperationToScreen(operations)
+    .onSnapshot(function (documentos){
+          
+          documentos.docChanges().forEach(function (changes){
+                
+                if(changes === "added"){
+                  window.location.href = "home.html"
+                }
+                
+                 if(changes === "modified"){
+                  window.location.href = "home.html"
+                }
+                
+                 if(changes === "removed"){
+                  window.location.href = "home.html"
+                }
+                
+                
+                
+          })
+          
     })
-    .catch(erro => {
-      hideLoading();
-      console.log("Erro ao recuperar as operaçãoes!", erro)
-    })
-    .onSnapshot(snapShot => {
-      
-    
-      snapShot.docChanges().forEach(home => {
+  
+  
 
-        
-
-        if(home.type == "added"){
-          window.location.href = 'home.html'
-        }
-        
-        if (home.type == 'removed') {
-
-          console.log('removed')
-          window.location.href = 'home.html'
-        }
-
-        if (home.type == 'modified') {
-
-          console.log('modified')
-          window.location.href = 'home.html'
-        }
-
-
-      })
-    })
 })
-
 
 f.ps().addEventListener('touchstart', superUser)
 
@@ -83,7 +68,7 @@ function superUser() {
   })
 }
 
-/*
+
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
@@ -91,9 +76,9 @@ firebase.auth().onAuthStateChanged(user => {
   }
 })
 
-*/
 
-/*
+
+
 
 function findOperation(user) {
 
@@ -115,7 +100,7 @@ function findOperation(user) {
 
 }
 
-*/
+
 
 
 function addOperationToScreen(operation) {
@@ -223,6 +208,8 @@ function addOperationToScreen(operation) {
   })
 
 }
+
+
 
 function formatDescription(description) {
   return `Descrição: ${description.tipo} Qdt: ${description.qtd}`
