@@ -6,22 +6,26 @@ const f = {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-      firebase.firestore()
-    .collection('home')
+window.addEventListener("DOMContentLoaded", () =>{
+  
+  firebase.firestore()
+    .collection("home")
     .onSnapshot(function (documentos){
           
           documentos.docChanges().forEach(function (changes){
                 
                 if(changes === "added"){
+                  console.log('added')
                   window.location.href = "home.html"
                 }
                 
                  if(changes === "modified"){
+                   console.log('modified')
                   window.location.href = "home.html"
                 }
                 
                  if(changes === "removed"){
+                   console.log('removed')
                   window.location.href = "home.html"
                 }
                 
@@ -31,8 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
           
     })
   
-  
-
 })
 
 f.ps().addEventListener('touchstart', superUser)
