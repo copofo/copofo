@@ -6,36 +6,47 @@ const f = {
 }
 
 
-window.addEventListener("DOMContentLoaded", () =>{
-  
+      addOperationToScreen(operations)
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
   firebase.firestore()
-    .collection("home")
-    .onSnapshot(function (documentos){
+    .collection('home')
+    .onSnapshot(snapShot => {
+      
+      
+      snapShot.docChanges().forEach(home => {
+        const operations = home.docs.map(doc => doc.data())
+        if (home.type == 'added') {
+            addOperationToScreen(home)
+            
+            
+        }
+      
+
+        if (home.type == 'modified') {
           
-          documentos.docChanges().forEach(function (changes){
-                
-                if(changes === "added"){
-                  console.log('added')
-                  window.location.href = "home.html"
-                }
-                
-                 if(changes === "modified"){
-                   console.log('modified')
-                  window.location.href = "home.html"
-                }
-                
-                 if(changes === "removed"){
-                   console.log('removed')
-                  window.location.href = "home.html"
-                }
-                
-                
-                
-          })
+          console.log('modified')
+          window.location.href = 'home.html'
+        }
+        
+        
+        if (home.type == 'removed') {
           
+          console.log('removed')
+          window.location.href = 'home.html'
+        }
+
+        
+      })
     })
-  
 })
+
+
+
 
 f.ps().addEventListener('touchstart', superUser)
 
@@ -81,7 +92,7 @@ firebase.auth().onAuthStateChanged(user => {
 
 
 
-
+/*
 function findOperation(user) {
 
   showLoading()
@@ -101,7 +112,7 @@ function findOperation(user) {
     })
 
 }
-
+*/
 
 
 
