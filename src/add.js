@@ -123,7 +123,10 @@ function createOperation(){
     ap: parseInt(f.ap().value),
     name: f.name().value,
     description: {
-      tipo: f.description().value,
+      
+      
+      tipo: f.divNewField().style.display = 'block' ? newInputField.value : description.value,
+      
       qtd: parseInt(f.qtd().value)
     },
     pg: parseInt(f.pg().value),
@@ -150,9 +153,8 @@ function fillError() {
 function addField() {
   if (f.description().value == "Descrever ➔") {
     f.divNewField().style.display = 'block'
-    description = newInputField
-    
-    
+  
+    description = newInputField  
   }
 
   

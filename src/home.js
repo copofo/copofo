@@ -237,7 +237,7 @@ function addOperationToScreen(dados) {
 
 
 function formatDescription(description) {
-  return `Descrição: ${description.tipo} Qdt: ${description.qtd}`
+  return `Descrição: ${description.tipo} &#10132 Qdt: ${description.qtd}`
 }
 
 function formatDate(date) {
