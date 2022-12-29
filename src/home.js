@@ -22,15 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .collection('home')
     .onSnapshot(function (documentos) {
 
-      /*
-      var dados = documentos.docs.map(doc => ({
-        
-        ...doc.data(),
-        uid: doc.id
-
-      }));
-      */
-
       documentos.docChanges().forEach(function (changes) {
 
         if (changes.type == 'added') {
@@ -74,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 f.ps().addEventListener('touchstart', superUser)
+
+f.ps().addEventListener('click', sair)
 
 function sair() {
   firebase.auth().signOut()

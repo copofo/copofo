@@ -47,9 +47,9 @@
                     <div><label for="newInputField" id="newLabelInputField">Descreva</label></div>
                     <input type="text" id="newInputField">
                 </div>
-                
 
-                <div><label for="">Qtd:</label><input type="number" id="qtd" onchange="fillError()"></div>
+
+                <div><label for="qtd">Qtd:</label><input type="number" id="qtd" onchange="fillError()"></div>
             </div>
 
             <div><label for="pg"></label>Página:</div>
@@ -66,18 +66,41 @@
 
             <div style="display: none;"><label for="status"></label>Status</div>
 
-            <label for="receive" style="display: none;">Pendente</label><input type="radio" name="status" id="receive"
-                checked style="display: none;">
-            <label for="deliver" style="display: none;">Entregue</label><input type="radio" name="status" id="deliver"
-                disabled style="display: none;">
+            <label for="receive" style="display: none;">Pendente</label>
+
+            <input type="radio" name="status" id="receive" checked style="display: none;">
+
+
+            <label id='lblDeliber' for="deliver" style="display: none;">Entregar</label>
+
+            <input type="radio" name="status" id="deliver" disabled style="display: none;">
+
+
+            <!-- Dados entrega-->
+            <label for="dateOut" style="display: none;">Data da Entrega</label>
+
+            <input type="text" name="dateOut" id="dateOut" disabled style="display: none;">
+
+            <label for="hourOut" style="display: none;">Hora da Entrega</label>
+
+            <input type="text" name="hourOut" id="hourOut" disabled style="display: none;">
+
+            <label for="nameOpOut" style="display: none;">Nome do Operador</label>
+
+            <input type="text" name="nameOpOut" id="nameOpOut" disabled style="display: none;">
 
 
 
 
-            
+
+
+
+
             <div>
                 <div class="error" id="msg-fill-error">&uarr; Preencha todos os campos</div>
-                <div class="divCentralize"><button type="button" id="btnAdd" onclick="saveOperation()" disabled>Concluir</button>
+                
+                <div class="divCentralize"><button type="button" id="btnAdd" onclick="saveOperation()"
+                        disabled>Concluir</button>
                 </div>
             </div>
 
