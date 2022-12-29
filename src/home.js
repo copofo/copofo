@@ -2,11 +2,10 @@ const f = {
   btn: () => document.getElementById('btnVoltar'),
   ps: () => document.getElementById('ps'),
   msgError: () => document.getElementById('msg-error'),
-  op: () => document.getElementById('operation')
+  op: () => document.getElementById('dados')
 }
 
 
-      addOperationToScreen(operations)
 
 
 
@@ -15,26 +14,35 @@ const f = {
 document.addEventListener('DOMContentLoaded', () => {
   firebase.firestore()
     .collection('home')
-    .onSnapshot(snapShot => {
+    .onSnapshot(function (documentos){
       
       
-      snapShot.docChanges().forEach(home => {
-        const operations = home.docs.map(doc => doc.data())
-        if (home.type == 'added') {
-            addOperationToScreen(home)
+      documentos.docChanges().forEach(function (changes) {
+        
+        if (changes.type == 'added') {
+            
+            
+            const doc = changes.doc
+            
+            const dados = doc.data()
+            
+            const key = doc.id
+            
+            
+            addOperationToScreen(dados)
             
             
         }
       
 
-        if (home.type == 'modified') {
+        if (changes.type == 'modified') {
           
           console.log('modified')
           window.location.href = 'home.html'
         }
         
         
-        if (home.type == 'removed') {
+        if (changes.type == 'removed') {
           
           console.log('removed')
           window.location.href = 'home.html'
@@ -116,7 +124,9 @@ function findOperation(user) {
 
 
 
-function addOperationToScreen(operation) {
+function addOperationToScreen(dados) {
+  
+  /*
 
   var pen = 0;
   var ent = 0;
@@ -136,89 +146,91 @@ function addOperationToScreen(operation) {
 
   const p = document.getElementById('cont')
   p.innerHTML = `Pendentes: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
+  
+  */
 
-  const orderList = document.getElementById('operation')
+  const orderList = document.getElementById('dados')
 
-  operation.forEach(operation => {
+  
 
     const li = document.createElement('li');
 
-    li.classList.add(operation.typeColor, "li-get");
+    li.classList.add(dados.typeColor, "li-get");
 
-    if (operation.ap) {
+    if (dados.ap) {
       const ap = document.createElement('p')
-      ap.innerHTML = `<strong>Ap: ${operation.ap}<strong>`
+      ap.innerHTML = `<strong>Ap: ${dados.ap}<strong>`
       li.appendChild(ap)
 
     }
 
-    if (operation.name) {
+    if (dados.name) {
 
       const name = document.createElement('p')
-      name.innerHTML = "Nome: " + operation.name
+      name.innerHTML = "Nome: " + dados.name
       li.appendChild(name)
     }
 
-    if (operation.description) {
+    if (dados.description) {
 
       const description = document.createElement('p')
-      description.innerHTML = formatDescription(operation.description)
+      description.innerHTML = formatDescription(dados.description)
       li.appendChild(description)
     }
 
-    if (operation.pg) {
+    if (dados.pg) {
 
       const pg = document.createElement('p')
-      pg.innerHTML = "Página: " + operation.pg
+      pg.innerHTML = "Página: " + dados.pg
       li.appendChild(pg)
 
     }
 
-    if (operation.dateIn) {
+    if (dados.dateIn) {
       const dateIn = document.createElement('p')
-      dateIn.innerHTML = "Recebimento: " + operation.dateIn
+      dateIn.innerHTML = "Recebimento: " + dados.dateIn
       li.appendChild(dateIn)
     }
 
-    if (operation.hourIn) {
+    if (dados.hourIn) {
       const hourIn = document.createElement('p')
-      hourIn.innerHTML = operation.hourIn
+      hourIn.innerHTML = dados.hourIn
       li.appendChild(hourIn)
     }
 
-    if (operation.nameOpIn) {
+    if (dados.nameOpIn) {
       const nameOpIn = document.createElement('p')
-      nameOpIn.innerHTML = "Operador: " + operation.nameOpIn;
+      nameOpIn.innerHTML = "Operador: " + dados.nameOpIn;
       li.appendChild(nameOpIn)
     }
 
-    if (operation.status) {
+    if (dados.status) {
       const status = document.createElement('p')
-      status.innerHTML = "Status: " + operation.status
+      status.innerHTML = "Status: " + dados.status
       li.appendChild(status)
     }
 
-    if (operation.dateOut) {
+    if (dados.dateOut) {
       const dateOut = document.createElement('p')
-      dateOut.innerHTML = operation.dateOut
+      dateOut.innerHTML = dados.dateOut
       li.appendChild(dateOut)
     }
 
-    if (operation.hourOut) {
+    if (dados.hourOut) {
       const hourOut = document.createElement('p')
-      hourOut.innerHTML = operation.hourOut
+      hourOut.innerHTML = dados.hourOut
       li.appendChild(hourOut)
     }
 
-    if (operation.nameOpOut) {
+    if (dados.nameOpOut) {
       const nameOpOut = document.createElement('p')
-      nameOpOut.innerHTML = "Operador: " + operation.nameOpOut
+      nameOpOut.innerHTML = "Operador: " + dados.nameOpOut
       li.appendChild(nameOpOut)
     }
 
     orderList.appendChild(li);
 
-  })
+  
 
 }
 
