@@ -3,6 +3,7 @@ var pen = 0;
 var ent = 0;
 
 
+
 const f = {
   btn: () => document.getElementById('btnVoltar'),
   ps: () => document.getElementById('ps'),
@@ -19,53 +20,52 @@ const f = {
 document.addEventListener('DOMContentLoaded', () => {
   firebase.firestore()
     .collection('home')
-    .onSnapshot(function (documentos){
-      
-      
-      
-      
-      documentos.docChanges().forEach(function (changes) {
-        
-        
-        
-        
-    
-    
+    .onSnapshot(function (documentos) {
 
+      /*
+      var dados = documentos.docs.map(doc => ({
         
-        
-        
-        
+        ...doc.data(),
+        uid: doc.id
+
+      }));
+      */
+
+      documentos.docChanges().forEach(function (changes) {
+
         if (changes.type == 'added') {
-            
-            
-            const doc = changes.doc
-            
-            const dados = doc.data()
-            
-            const key = doc.id
-            
-            
-            addOperationToScreen(dados,key)
-            
-            
+
+
+          const doc = changes.doc
+
+          const dados = {
+
+            ...doc.data(), uid: doc.id
+
+          }
+
+          addOperationToScreen(dados)
+
         }
-      
+
+
+
+
 
         if (changes.type == 'modified') {
-          
+
           console.log('modified')
           window.location.href = 'home.html'
         }
-        
-        
+
+
         if (changes.type == 'removed') {
-          
+
           console.log('removed')
           window.location.href = 'home.html'
         }
 
-        
+
       })
     })
 })
@@ -107,13 +107,13 @@ function superUser() {
 }
 
 
-
+/*
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
     findOperation(user);
   }
 })
-
+*/
 
 
 /*
@@ -145,8 +145,8 @@ function FindOperation() {
 
 
 
-function addOperationToScreen(dados,key) {
-  
+function addOperationToScreen(dados) {
+
   /*
 
   var pen = 0;
@@ -169,124 +169,137 @@ function addOperationToScreen(dados,key) {
   p.innerHTML = `Pendentes: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
   
   */
-  
-  
-  if (dados.status === 'Entregue') {
-      ent++;
-    }
 
-    if (dados.status === "Aguardando Retirada") {
-      pen++;
-    }
-  
-  
+
+  if (dados.status === 'Entregue') {
+    ent++;
+  }
+
+  if (dados.status === "Aguardando Retirada") {
+    pen++;
+  }
+
+
   const p = document.getElementById('cont')
   p.innerHTML = `Pendentes: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
 
   const orderList = document.getElementById('dados')
 
-  
 
-    const li = document.createElement('li');
 
-    li.classList.add(dados.typeColor, "li-get");
-    
-    li.ad = key;
-    
-    li.addEventListener('touchmove',()=>{
-          c = 0
-        })
-        
-        
-        
-        li.addEventListener('touchstart', () => {
-          
-          c++;
-              if(c >= 3){
+  const li = document.createElement('li');
+
+  li.classList.add(dados.typeColor, "li-get");
+
+  li.ad = dados.uid;
+
+  li.addEventListener('touchmove', () => {
     c = 0
-    window.location.href = 'add.html?uid=' + key;
+  })
+
+
+
+  li.addEventListener('touchstart', () => {
+
+    c++;
+    if (c >= 3) {
+      c = 0
+      window.location.href = 'add.html?uid=' + dados.uid;
     }
-        })
-    
+  })
 
-    if (dados.ap) {
-      const ap = document.createElement('p')
-      ap.innerHTML = `<strong>Ap: ${dados.ap}<strong>`
-      li.appendChild(ap)
 
-    }
 
-    if (dados.name) {
 
-      const name = document.createElement('p')
-      name.innerHTML = "Nome: " + dados.name
-      li.appendChild(name)
-    }
 
-    if (dados.description) {
+  li.addEventListener('dblclick', () => {
 
-      const description = document.createElement('p')
-      description.innerHTML = formatDescription(dados.description)
-      li.appendChild(description)
-    }
 
-    if (dados.pg) {
+    window.location.href = 'add.html?uid=' + dados.uid;
 
-      const pg = document.createElement('p')
-      pg.innerHTML = "Página: " + dados.pg
-      li.appendChild(pg)
+  })
 
-    }
 
-    if (dados.dateIn) {
-      const dateIn = document.createElement('p')
-      dateIn.innerHTML = "Recebimento: " + dados.dateIn
-      li.appendChild(dateIn)
-    }
+  if (dados.ap) {
+    const ap = document.createElement('p')
+    ap.innerHTML = `<strong>Ap: ${dados.ap}<strong>`
+    li.appendChild(ap)
 
-    if (dados.hourIn) {
-      const hourIn = document.createElement('p')
-      hourIn.innerHTML = dados.hourIn
-      li.appendChild(hourIn)
-    }
+  }
 
-    if (dados.nameOpIn) {
-      const nameOpIn = document.createElement('p')
-      nameOpIn.innerHTML = "Operador: " + dados.nameOpIn;
-      li.appendChild(nameOpIn)
-    }
+  if (dados.name) {
 
-    if (dados.status) {
-      const status = document.createElement('p')
-      status.innerHTML = "Status: " + dados.status
-      li.appendChild(status)
-    }
+    const name = document.createElement('p')
+    name.innerHTML = "Nome: " + dados.name
+    li.appendChild(name)
+  }
 
-    if (dados.dateOut) {
-      const dateOut = document.createElement('p')
-      dateOut.innerHTML = dados.dateOut
-      li.appendChild(dateOut)
-    }
+  if (dados.description) {
 
-    if (dados.hourOut) {
-      const hourOut = document.createElement('p')
-      hourOut.innerHTML = dados.hourOut
-      li.appendChild(hourOut)
-    }
+    const description = document.createElement('p')
+    description.innerHTML = formatDescription(dados.description)
+    li.appendChild(description)
+  }
 
-    if (dados.nameOpOut) {
-      const nameOpOut = document.createElement('p')
-      nameOpOut.innerHTML = "Operador: " + dados.nameOpOut
-      li.appendChild(nameOpOut)
-    }
+  if (dados.pg) {
 
-    orderList.appendChild(li);
-    
-    
-    
-    
+    const pg = document.createElement('p')
+    pg.innerHTML = "Página: " + dados.pg
+    li.appendChild(pg)
 
-  
+  }
+
+  if (dados.dateIn) {
+    const dateIn = document.createElement('p')
+    dateIn.innerHTML = "Recebimento: " + dados.dateIn
+    li.appendChild(dateIn)
+  }
+
+  if (dados.hourIn) {
+    const hourIn = document.createElement('p')
+    hourIn.innerHTML = dados.hourIn
+    li.appendChild(hourIn)
+  }
+
+  if (dados.nameOpIn) {
+    const nameOpIn = document.createElement('p')
+    nameOpIn.innerHTML = "Operador: " + dados.nameOpIn;
+    li.appendChild(nameOpIn)
+  }
+
+  if (dados.status) {
+    const status = document.createElement('p')
+    status.innerHTML = "Status: " + dados.status
+    li.appendChild(status)
+  }
+
+  if (dados.dateOut) {
+    const dateOut = document.createElement('p')
+    dateOut.innerHTML = dados.dateOut
+    li.appendChild(dateOut)
+  }
+
+  if (dados.hourOut) {
+    const hourOut = document.createElement('p')
+    hourOut.innerHTML = dados.hourOut
+    li.appendChild(hourOut)
+  }
+
+  if (dados.nameOpOut) {
+    const nameOpOut = document.createElement('p')
+    nameOpOut.innerHTML = "Operador: " + dados.nameOpOut
+    li.appendChild(nameOpOut)
+  }
+
+
+
+  orderList.appendChild(li);
+
+
+
+
+
+
 
 }
 
@@ -305,7 +318,6 @@ function formatDate(date) {
 function reload() {
   window.location.reload = true;
 }
-
 
 
 
