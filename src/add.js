@@ -25,6 +25,72 @@ var newInputField = document.getElementById('newInputField')
 var description = document.getElementById('description')
 var op_desc = document.getElementById('op_desc')
 
+getOperationUid()
+
+
+if(!isNewOperation){
+  
+    const uid = getOperationUid()
+    console.log(uid)
+  
+}
+
+
+
+
+function getOperationUid(){
+  
+    const urlParams = new URLSearchParams(window.location.search)
+    
+    return urlParams.get('uid')
+  
+}
+
+function isNewOperation(){
+  
+    return getOperationUid() ? false : true
+  
+}
+
+function findOperationByUid(uid){
+  showLoading()
+  
+    firebase.firestore()
+      .collection('home')
+      .doc(uid)
+      .get()
+      .then(doc =>{
+          
+          hideLoading()
+          
+          if(doc.exists){
+            
+              console.log(doc.data())
+            
+          } else {
+            
+            
+              alert('Documento não encontrado')
+              window.location.href = "home.html"
+            
+          }
+          
+        
+      })
+      .catch(()=>{
+        hideLoading()
+          alert("Erro ao recuperar Documento")
+          
+          window.location.href = "home.html"
+      })
+  
+}
+
+
+
+
+
+
 
 var currentUser;
 var userName = f.nameOpIn();
@@ -166,3 +232,10 @@ function fillPg(){
   f.btnAdd().disabled = !f.pg().value ? true : false;
   f.msgFillError().style.display = !f.pg().value ? 'block' : 'none';
 }
+
+
+
+
+
+
+
