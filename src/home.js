@@ -1,3 +1,8 @@
+var c = 0;
+var pen = 0;
+var ent = 0;
+
+
 const f = {
   btn: () => document.getElementById('btnVoltar'),
   ps: () => document.getElementById('ps'),
@@ -17,7 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
     .onSnapshot(function (documentos){
       
       
+      
+      
       documentos.docChanges().forEach(function (changes) {
+        
+        
+        
+        
+    
+    
+
+        
+        
+        
         
         if (changes.type == 'added') {
             
@@ -29,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = doc.id
             
             
-            addOperationToScreen(dados)
+            addOperationToScreen(dados,key)
             
             
         }
@@ -99,32 +116,36 @@ firebase.auth().onAuthStateChanged(user => {
 
 
 
-
 /*
-function findOperation(user) {
 
-  showLoading()
-  firebase.firestore()
-    .collection('home')
-    // .where('user.uid', '==', user.uid)
-    .orderBy('ap')
-    .get()
-    .then(snapShot => {
-      hideLoading();
-      const operations = snapShot.docs.map(doc => doc.data())
-      addOperationToScreen(operations)
-    })
-    .catch(erro => {
-      hideLoading();
-      console.log("Erro ao recuperar as operaçãoes!", erro)
-    })
+function FindOperation() {
+    showLoading();
+    firebase.firestore()
+        .collection('home')
+        .orderBy('ap')
+        .get() 
+        .then(snapShot => {
+            hideLoading();
+            const operation = snapShot.docs.map(doc => ({
+                ...doc.data(),
+                uid: doc.id
+            }));
+            AddOperationToScreen(dados,key)
+        })
+        .catch(error => {
+            hideLoading();
+            console.log(error);
+            alert('erro ao recuperar operações')
+        })
+
+       
 
 }
 */
 
 
 
-function addOperationToScreen(dados) {
+function addOperationToScreen(dados,key) {
   
   /*
 
@@ -148,6 +169,19 @@ function addOperationToScreen(dados) {
   p.innerHTML = `Pendentes: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
   
   */
+  
+  
+  if (dados.status === 'Entregue') {
+      ent++;
+    }
+
+    if (dados.status === "Aguardando Retirada") {
+      pen++;
+    }
+  
+  
+  const p = document.getElementById('cont')
+  p.innerHTML = `Pendentes: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
 
   const orderList = document.getElementById('dados')
 
@@ -156,6 +190,24 @@ function addOperationToScreen(dados) {
     const li = document.createElement('li');
 
     li.classList.add(dados.typeColor, "li-get");
+    
+    li.ad = key;
+    
+    li.addEventListener('touchmove',()=>{
+          c = 0
+        })
+        
+        
+        
+        li.addEventListener('touchstart', () => {
+          
+          c++;
+              if(c >= 3){
+    c = 0
+    window.location.href = 'add.html?uid=' + key;
+    }
+        })
+    
 
     if (dados.ap) {
       const ap = document.createElement('p')
@@ -229,6 +281,10 @@ function addOperationToScreen(dados) {
     }
 
     orderList.appendChild(li);
+    
+    
+    
+    
 
   
 
@@ -249,8 +305,6 @@ function formatDate(date) {
 function reload() {
   window.location.reload = true;
 }
-
-
 
 
 
