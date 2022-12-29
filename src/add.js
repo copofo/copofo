@@ -23,6 +23,7 @@ const f = {
 
 var newInputField = document.getElementById('newInputField')
 var description = document.getElementById('description')
+var op_desc = document.getElementById('op_desc')
 
 
 var currentUser;
@@ -125,7 +126,7 @@ function createOperation(){
     description: {
       
       
-      tipo: f.divNewField().style.display = 'block' ? newInputField.value : description.value,
+      tipo: op_desc.selected ? newInputField.value : description.value,
       
       qtd: parseInt(f.qtd().value)
     },
