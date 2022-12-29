@@ -20,6 +20,7 @@ const f = {
 document.addEventListener('DOMContentLoaded', () => {
   firebase.firestore()
     .collection('home')
+    .orderBy('ap')
     .onSnapshot(function (documentos) {
 
       documentos.docChanges().forEach(function (changes) {
