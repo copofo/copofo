@@ -84,18 +84,46 @@ li.deliver:hover{
     .li-get {
         border: 0.10em solid black;
         width: 16em;
-        height: 15em;
+        height: 18em;
         margin-bottom: 0.50em;
         background-color: white;
         padding: 0.50em;
     }
 
-    li:hover {
-        background: rgba(0,0,0,0.30);
-        color: white;
-        font-weight: bold;
-        
-    }
+      
+      
+      li.deliver:hover{
+  border-right: 2.5em solid green;
+  
+  width: 18em;
+  height: 19em;
+  border-bottom: 1.5em solid rgb(000, 175, 000);
+  border-top: 1.5em solid rgb(000, 175, 000);
+  color: white;
+  
+  background: rgba(000,000,200,0.5);
+}
+    
+    
+    
+    
+    
+    
+    
+    li.receive:hover{
+  width: 18em;
+  height: 19em;
+  border-right: 2.5em solid red;
+  border-bottom: 1.5em solid rgb(175, 000, 000);
+  border-top: 1.5em solid rgb(175, 000, 000);
+  color: white;
+  
+  background: rgba(000,000,200,0.5);
+}
+    
+    
+    
+    
     
     
     
