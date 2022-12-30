@@ -54,3 +54,9 @@ button.vl:hover{
 #qtd{
     width: 3em;
 }
+
+#btnRemove{
+
+    display: none;
+
+}

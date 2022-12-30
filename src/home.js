@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           }
 
-          addOperationToScreen(dados)
+          addDadosToScreen(dados)
 
         }
 
@@ -104,7 +104,7 @@ function superUser() {
 /*
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    findOperation(user);
+    finddados(user);
   }
 })
 */
@@ -112,7 +112,7 @@ firebase.auth().onAuthStateChanged(user => {
 
 /*
 
-function FindOperation() {
+function Finddados() {
     showLoading();
     firebase.firestore()
         .collection('home')
@@ -120,11 +120,11 @@ function FindOperation() {
         .get() 
         .then(snapShot => {
             hideLoading();
-            const operation = snapShot.docs.map(doc => ({
+            const dados = snapShot.docs.map(doc => ({
                 ...doc.data(),
                 uid: doc.id
             }));
-            AddOperationToScreen(dados,key)
+            addDadosToScreen(dados,key)
         })
         .catch(error => {
             hideLoading();
@@ -139,7 +139,7 @@ function FindOperation() {
 
 
 
-function addOperationToScreen(dados) {
+function addDadosToScreen(dados) {
 
   /*
 
@@ -147,7 +147,7 @@ function addOperationToScreen(dados) {
   var ent = 0;
 
 
-  operation.forEach((v) => {
+  dados.forEach((v) => {
     if (v.status === 'Entregue') {
       ent++;
     }
@@ -213,6 +213,7 @@ function addOperationToScreen(dados) {
 
   })
 
+  
 
   if (dados.ap) {
     const ap = document.createElement('p')
@@ -312,6 +313,7 @@ function formatDate(date) {
 function reload() {
   window.location.reload = true;
 }
+
 
 
 

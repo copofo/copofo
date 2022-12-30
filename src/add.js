@@ -14,7 +14,7 @@ const f = {
   btnAdd: () => document.getElementById('btnAdd'),
   msgFillError: () => document.getElementById('msg-fill-error'),
   msgError: () => document.getElementById('error'),
-  
+
   btnMais: () => document.getElementById('btnMais'),
   divNewField: () => document.getElementById('divNewField'),
   newInputField: () => document.getElementById('newInputField'),
@@ -32,6 +32,7 @@ const f = {
 var newInputField = document.getElementById('newInputField')
 var description = document.getElementById('description')
 var op_desc = document.getElementById('op_desc')
+
 
 
 var currentUser;
@@ -63,7 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       userName.value = currentUser.displayName;
 
-      
+
     } else {
       alert('erro')
     }
@@ -108,17 +109,17 @@ window.addEventListener('keypress', function (e) {
 })
 
 
-function saveOperation() {
+function savedados() {
   showLoading();
-  const operation = createOperation();
+  const dados = createdados();
 
-  
 
-  if(isNewOperation()){
-    save(operation)
+
+  if (isNewdados()) {
+    save(dados)
   } else {
 
-    update(operation)
+    update(dados)
 
   }
 
@@ -126,55 +127,55 @@ function saveOperation() {
 
 }
 
-function save(operation){
+function save(dados) {
 
   firebase.firestore()
     .collection('home')
-    .add(operation)
-    .then(()=>{
+    .add(dados)
+    .then(() => {
       hideLoading();
       window.location.href = '../index.html'
     })
-    .catch(()=>{
+    .catch(() => {
       f.msgError().style.display = 'block'
     })
 
 }
 
 
-function update(operation){
+function update(dados) {
 
-    showLoading()
+  showLoading()
 
-    firebase.firestore()
+  firebase.firestore()
     .collection('home')
-    .doc(getOperationUid())
-    .update(operation)
-    .then(()=> {
+    .doc(getdadosUid())
+    .update(dados)
+    .then(() => {
 
-        hideLoading()
-        window.location.href = 'home.html'
+      hideLoading()
+      window.location.href = 'home.html'
 
     })
-    .catch(()=>{
+    .catch(() => {
 
-        hideLoading()
-        alert("Erro ao atualizar operação")
+      hideLoading()
+      alert("Erro ao atualizar operação")
 
     })
 
 }
 
-function createOperation(){
+function createdados() {
   return {
     typeColor: f.receive().checked ? "receive" : "deliver",
     ap: parseInt(f.ap().value),
     name: f.name().value,
     description: {
-      
-      
+
+
       tipo: op_desc.selected ? newInputField.value : description.value,
-      
+
       qtd: parseInt(f.qtd().value)
     },
     pg: parseInt(f.pg().value),
@@ -197,7 +198,7 @@ function fillError() {
   const desc = f.description().value
   const qdt = f.qtd().value
   f.msgFillError().style.display = !ap || !name || !pg || !desc || !qdt ? 'block' : 'none';
-  
+
   f.btnAdd().disabled = !ap || !name || !pg || !desc || !qdt ? true : false;
 }
 
@@ -206,15 +207,15 @@ function fillError() {
 function addField() {
   if (f.description().value == "Descrever ➔") {
     f.divNewField().style.display = 'block'
-  
-    description = newInputField  
+
+    description = newInputField
   }
 
-  
-  
+
+
 }
 
-function fillPg(){
+function fillPg() {
   f.btnAdd().disabled = !f.pg().value ? true : false;
   f.msgFillError().style.display = !f.pg().value ? 'block' : 'none';
 }
@@ -222,42 +223,42 @@ function fillPg(){
 
 // Atualizar Operação
 
-if(!isNewOperation()){
+if (!isNewdados()) {
 
-  const uid = getOperationUid()
-  findOperationByUid(uid)
+  const uid = getdadosUid()
+  finddadosByUid(uid)
 
 }
 
-function getOperationUid(){
+function getdadosUid() {
   const urlParams = new URLSearchParams(window.location.search)
 
   return urlParams.get('uid');
 }
 
-function isNewOperation(){
+function isNewdados() {
 
-  return getOperationUid() ? false : true;
+  return getdadosUid() ? false : true;
 
 }
 
 
 
-function findOperationByUid(uid){
+function finddadosByUid(uid) {
 
   showLoading()
 
   firebase.firestore()
-  .collection('home')
-  .doc(uid)
-  .get()
-  .then(doc =>{
+    .collection('home')
+    .doc(uid)
+    .get()
+    .then(doc => {
 
       hideLoading()
 
-      if(doc.exists){
+      if (doc.exists) {
 
-        fillOperationScreen(doc.data())
+        filldadosScreen(doc.data())
 
       } else {
 
@@ -266,18 +267,18 @@ function findOperationByUid(uid){
 
       }
 
-  })
-  .catch(erro =>{
+    })
+    .catch(erro => {
 
       console.log('Erro ao recuperar documento!', erro)
 
-  })
+    })
 
 }
 
-function fillOperationScreen(operation){
+function filldadosScreen(dados) {
 
-  if(operation.typeColor == 'receive'){
+  if (dados.typeColor == 'receive') {
 
     f.receive().checked = true
 
@@ -287,15 +288,15 @@ function fillOperationScreen(operation){
 
   }
 
-  f.ap().value = operation.ap
-  f.name().value = operation.name
-  
-  
+  f.ap().value = dados.ap
+  f.name().value = dados.name
 
-  f.pg().value = operation.pg
-  f.dateIn().value = operation.dateIn
-  f.hourIn().value = operation.hourIn
-  f.nameOpIn().value = operation.nameOpIn
+
+
+  f.pg().value = dados.pg
+  f.dateIn().value = dados.dateIn
+  f.hourIn().value = dados.hourIn
+  f.nameOpIn().value = dados.nameOpIn
 
 
   f.dataOut().value = dataAtual
@@ -308,18 +309,66 @@ function fillOperationScreen(operation){
   f.btnMais().disabled = true
   f.qtd().disabled = true
   f.pg().disabled = true
-  
+
   f.lblDeliber().style.display = 'block'
   f.deliver().style.display = 'block'
   f.deliver().disabled = false;
   f.btnAdd().disabled = false;
-  
-  
-  
+
+
+
 }
 
 
 
 
 
+function removeDados() {
 
+  
+
+    
+
+    showLoading()
+
+    firebase.firestore()
+      .collection('home')
+      .doc(getdadosUid())
+      .delete()
+      .then(() => {
+
+        hideLoading()
+        window.location.href = 'home.html'
+
+      })
+      .catch(() => {
+
+        hideLoading()
+        alert("Erro ao atualizar operação")
+
+      })
+
+
+  
+
+
+
+
+
+
+
+}
+
+
+firebase.auth().onAuthStateChanged((user)=>{
+
+
+  if(user.displayName == 'Telles'){
+
+    document.getElementById('btnRemove').style.display = 'block'
+
+  }
+
+
+
+})

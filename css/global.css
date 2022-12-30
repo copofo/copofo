@@ -105,3 +105,18 @@ div.footer{
     width: 100%;
     bottom: 3em;
 }
+
+.outline{
+
+    background: transparent;
+    color: white;
+    border: 0.09em solid white;
+
+}
+
+button.outline.danger{
+
+    color: red;
+    border-color: red;
+
+}
