@@ -26,7 +26,8 @@ const f = {
 
   nameOpOut: () => document.getElementById('nameOpOut'),
 
-  lblDeliber: () => document.getElementById('lblDeliber')
+  lblDeliber: () => document.getElementById('lblDeliber'),
+  lblReceive: () => document.getElementById('lblReceive')
 }
 
 var newInputField = document.getElementById('newInputField')
@@ -364,7 +365,24 @@ function filldadosScreen(dados) {
   f.deliver().disabled = false;
   f.btnAdd().disabled = false;
   
-  
+  if(currentUser.displayName == "Telles"){
+    
+    
+    
+    f.ap().disabled = false
+    f.name().disabled = false
+    f.description().disabled = false
+    f.btnMais().disabled = false
+    f.qtd().disabled = false
+    f.pg().disabled = false
+    
+    f.newInputField().disabled = false
+    
+    f.lblReceive().style.display = "block"
+    
+    f.receive().style.display = "block"
+    
+  }
   
   
     

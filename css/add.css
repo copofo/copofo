@@ -58,5 +58,8 @@ button.vl:hover{
 #btnRemove{
 
     display: none;
+    position: absolute;
+    top: 2em;
+    left: 0;
 
 }
