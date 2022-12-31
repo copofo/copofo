@@ -33,9 +33,6 @@ const f = {
 var newInputField = document.getElementById('newInputField')
 
 
-/*
-var description = document.getElementById('description')
-*/
 
 
 
@@ -118,19 +115,22 @@ window.addEventListener('keypress', function (e) {
 })
 
 
-function savedados() {
-  showLoading();
-  const dados = createdados();
+function saveDados() {
+  
+  
+showLoading();
+    const dados = createDados();
 
-
-
-  if (isNewdados()) {
-    save(dados)
-  } else {
-
-    update(dados)
-
-  }
+    if(isNewDados()){
+        save(dados);
+        
+    } else {
+        update(dados);
+        
+        if(dados.status == 'Entregue'){
+            saveEntrega(dados);
+        }
+    }
 
 
 
@@ -152,13 +152,34 @@ function save(dados) {
 }
 
 
+
+function saveEntrega(dados){
+
+    firebase.firestore()
+    .collection('ArquivoEntregas')
+    .add(dados)
+    .then(()=>{
+        hideLoading();
+        window.location.href = 'home.html'
+    })
+    .catch(()=>{
+        hideLoading();
+        alert('Erro ao adicionar encomenda')
+    })
+}
+
+
+
+
+
+
 function update(dados) {
 
   showLoading()
 
   firebase.firestore()
     .collection('home')
-    .doc(getdadosUid())
+    .doc(getDadosUid())
     .update(dados)
     .then(() => {
 
@@ -175,7 +196,7 @@ function update(dados) {
 
 }
 
-function createdados() {
+function createDados() {
   return {
     typeColor: f.receive().checked ? "receive" : "deliver",
     ap: parseInt(f.ap().value),
@@ -233,28 +254,28 @@ function fillPg() {
 
 // Atualizar Operação
 
-if (!isNewdados()) {
+if (!isNewDados()) {
 
-  const uid = getdadosUid()
-  finddadosByUid(uid)
+  const uid = getDadosUid()
+  findDadosByUid(uid)
 
 }
 
-function getdadosUid() {
+function getDadosUid() {
   const urlParams = new URLSearchParams(window.location.search)
 
   return urlParams.get('uid');
 }
 
-function isNewdados() {
+function isNewDados() {
 
-  return getdadosUid() ? false : true;
+  return getDadosUid() ? false : true;
 
 }
 
 
 
-function finddadosByUid(uid) {
+function findDadosByUid(uid) {
 
   showLoading()
 
@@ -268,7 +289,7 @@ function finddadosByUid(uid) {
 
       if (doc.exists) {
 
-        filldadosScreen(doc.data())
+        fillDadosScreen(doc.data())
 
       } else {
 
@@ -279,14 +300,14 @@ function finddadosByUid(uid) {
 
     })
     .catch(erro => {
-
+      hideLoading()
       console.log('Erro ao recuperar documento!', erro)
 
     })
 
 }
 
-function filldadosScreen(dados) {
+function fillDadosScreen(dados) {
 
   if (dados.typeColor == 'receive') {
 
@@ -405,7 +426,7 @@ function removeDados() {
 
     firebase.firestore()
       .collection('home')
-      .doc(getdadosUid())
+      .doc(getDadosUid())
       .delete()
       .then(() => {
 
@@ -444,3 +465,43 @@ firebase.auth().onAuthStateChanged((user)=>{
 
 
 })
+
+/*
+
+function saveDados(){
+    showLoading();
+    const dados = createDados();
+
+    if(isNewDados()){
+        save(dados);
+        
+    } else {
+        update(dados);
+        
+        if(dados.status == 'Entregue'){
+            saveEntrega(dados);
+        }
+    }
+    
+}
+
+
+
+
+function saveEntrega(dados){
+
+    firebase.firestore()
+    .collection('ArquivoEntregas')
+    .add(dados)
+    .then(()=>{
+        hideLoading();
+        window.location.href = 'home.html'
+    })
+    .catch(()=>{
+        hideLoading();
+        alert('Erro ao adicionar encomenda')
+    })
+}
+
+
+*/
