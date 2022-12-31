@@ -245,6 +245,17 @@ button.danger{
     
 }
 
+ul > li:hover{
+  
+  border-color: blue;
+  color: white;
+  
+  font-weight: bolder;
+  
+  
+  transition: 0.3s;
+  
+}
 
 
 

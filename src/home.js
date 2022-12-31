@@ -1,7 +1,7 @@
 var c = 0;
 var pen = 0;
 var ent = 0;
-
+var currentUser;
 
 
 const f = {
@@ -12,7 +12,27 @@ const f = {
 }
 
 
-
+window.addEventListener("DOMContentLoaded", ()=>{
+  
+  
+  firebase.auth().onAuthStateChanged((user)=>{
+    
+    currentUser = firebase.auth().currentUser;
+    
+    if(currentUser.displayName == "Telles"){
+      
+      f.ps().style.display = "block"
+      
+      
+    }
+    
+    
+  })
+  
+  
+  
+  
+})
 
 
 

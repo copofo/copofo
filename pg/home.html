@@ -16,19 +16,35 @@
   <div id="lbl"></div>
 
   <header id="header">
+    
     <a id="logo" href="#">Home</a>
+    
     <nav id="nav">
+      
       <button type="button" id="btn-menu" aria-expanded="false" aria-controls="menu" aria-haspopup="true"
         aria-label="Abrir Menu">
         <span id="hamburger"></span>
       </button>
+      
+      
       <ul id="menu" role="menu">
+        
         <li>Entregues</li>
+        
         <li>Ocorrências</li>
-        <li onclick="superUser()" id="ps">SuperUser</li>
+        
+        <li onclick="superUser()" id="ps" style="display: none;">
+          SuperUser
+          </li>
+        
+        
+        
         <li onclick="sair()">Sair</li>
+        
       </ul>
+      
     </nav>
+    
   </header>
 
   <p id="cont"></p>
