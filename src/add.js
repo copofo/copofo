@@ -30,7 +30,15 @@ const f = {
 }
 
 var newInputField = document.getElementById('newInputField')
+
+
+/*
 var description = document.getElementById('description')
+*/
+
+
+
+
 var op_desc = document.getElementById('op_desc')
 
 
@@ -178,6 +186,7 @@ function createdados() {
 
       qtd: parseInt(f.qtd().value)
     },
+    
     pg: parseInt(f.pg().value),
     dateIn: f.dateIn().value,
     hourIn: f.hourIn().value,
@@ -290,9 +299,49 @@ function filldadosScreen(dados) {
 
   f.ap().value = dados.ap
   f.name().value = dados.name
+  
+  
+  f.qtd().value = dados.description.qtd
+  
+  
+  f.description().value = dados.description.tipo
+  
+  if(dados.description.tipo != "Envelope" && dados.description.tipo != "Caixa" && dados.description.tipo != "Pacote"){
+    
+    f.newInputField().value = dados.description.tipo
+    
+    f.divNewField().style.display = "block"
+    
+    f.newInputField().disabled = true
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  if(f.newInputField().value){
+    
+    
+  
+    
+    op_desc.selected = true
+    
+    
+    
+  } 
+  
+  
+    
+    
+    
+  
 
-
-
+  
+  
+  
   f.pg().value = dados.pg
   f.dateIn().value = dados.dateIn
   f.hourIn().value = dados.hourIn
@@ -314,8 +363,13 @@ function filldadosScreen(dados) {
   f.deliver().style.display = 'block'
   f.deliver().disabled = false;
   f.btnAdd().disabled = false;
-
-
+  
+  
+  
+  
+    
+      
+      
 
 }
 

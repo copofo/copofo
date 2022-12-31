@@ -267,6 +267,10 @@ function addDadosToScreen(dados) {
     status.innerHTML = "Status: " + dados.status
     li.appendChild(status)
   }
+  
+
+  
+  
 
   if (dados.dateOut) {
     const dateOut = document.createElement('p')
