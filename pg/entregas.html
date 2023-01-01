@@ -62,7 +62,37 @@
 
 <script src="../src/loading.js"></script>
 
-<script src="guard.js"></script>
+<script>
+  
+  firebase.auth().onAuthStateChanged((user)=>{
+    
+    if(user.displayName != "Telles"){
+      
+      
+      window.location.href = "home.html"
+      
+      
+      
+    } else {
+  
+        
+      document.body.style.display = "block"
+  
+  
+  
+    }
+    
+    
+    
+  
+  })
+  
+  
+  
+  
+  
+  
+</script>
 
 
 <script src="../src/currentUser.js"></script>
