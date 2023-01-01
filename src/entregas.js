@@ -9,8 +9,7 @@ const f = {
   ps: () => document.getElementById('ps'),
   msgError: () => document.getElementById('msg-error'),
   op: () => document.getElementById('dados'),
-  sair: () => document.getElementById('sair'),
-  enDados: ()=> document.getElementById('enDados')
+  sair: () => document.getElementById('sair')
 }
 
 
@@ -24,7 +23,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     if(currentUser.displayName == "Telles"){
       
       f.ps().style.display = "block"
-      f.enDados().style.display = "block"
+      
       
     }
     
@@ -44,7 +43,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
 document.addEventListener('DOMContentLoaded', () => {
   firebase.firestore()
-    .collection('home')
+    .collection('ArquivoEntregas')
     .orderBy('ap')
     .onSnapshot(function (documentos) {
 
@@ -72,14 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (changes.type == 'modified') {
 
           console.log('modified')
-          window.location.href = 'home.html'
+          window.location.href = 'ArquivoEntregas.html'
         }
 
 
         if (changes.type == 'removed') {
 
           console.log('removed')
-          window.location.href = 'home.html'
+          window.location.href = 'ArquivoEntregas.html'
         }
 
 
@@ -90,21 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-f.ps().addEventListener('touchstart', superUser)
 
-f.sair().addEventListener('click', sair)
-
-
-
-f.enDados().addEventListener('touchstart', ()=>{
+function voltar(){
   
+  window.location.href = "home.html"
   
-  window.location.href = "entregas.html"
-  
-  
-})
-
-
+}
 
 function sair() {
   firebase.auth().signOut()
@@ -131,7 +121,7 @@ function superUser() {
       hideLoading();
       f.msgError().innerHTML = "ACESSO NEGADO!"
       setTimeout(() => {
-        window.location.href = 'home.html'
+        window.location.href = 'ArquivoEntregas.html'
       }, 1000);
     }
   })
@@ -152,7 +142,7 @@ firebase.auth().onAuthStateChanged(user => {
 function Finddados() {
     showLoading();
     firebase.firestore()
-        .collection('home')
+        .collection('ArquivoEntregas')
         .orderBy('ap')
         .get() 
         .then(snapShot => {
