@@ -8,7 +8,8 @@ const f = {
   btn: () => document.getElementById('btnVoltar'),
   ps: () => document.getElementById('ps'),
   msgError: () => document.getElementById('msg-error'),
-  op: () => document.getElementById('dados')
+  op: () => document.getElementById('dados'),
+  sair: () => document.getElementById('sair')
 }
 
 
@@ -33,6 +34,9 @@ window.addEventListener("DOMContentLoaded", ()=>{
   
   
 })
+
+
+
 
 
 
@@ -87,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 f.ps().addEventListener('touchstart', superUser)
 
-f.ps().addEventListener('click', sair)
+f.sair().addEventListener('click', sair)
 
 function sair() {
   firebase.auth().signOut()

@@ -36,11 +36,16 @@ a {
 #menu li {
     display: block;
     padding: .5em;
+  
 }
 
 #btn-menu {
     display: none;
 }
+
+
+
+
 
 li.receive{
     border-left: 2.5em solid red;
@@ -247,10 +252,13 @@ button.danger{
 
 ul > li:hover{
   
-  border-color: blue;
+  
+  
   color: white;
   
   font-weight: bolder;
+  
+  font-size: 100%;
   
   
   transition: 0.3s;
