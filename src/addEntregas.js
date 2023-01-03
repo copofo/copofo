@@ -143,7 +143,7 @@ function save(dados) {
     .add(dados)
     .then(() => {
       hideLoading();
-      window.location.href = '../index.html'
+      window.location.href = 'entregas.html'
     })
     .catch(() => {
       f.msgError().style.display = 'block'
@@ -160,7 +160,7 @@ function saveEntrega(dados){
     .add(dados)
     .then(()=>{
         hideLoading();
-        window.location.href = 'home.html'
+        window.location.href = 'entregas.html'
     })
     .catch(()=>{
         hideLoading();
@@ -184,7 +184,7 @@ function update(dados) {
     .then(() => {
 
       hideLoading()
-      window.location.href = 'home.html'
+      window.location.href = 'entregas.html'
 
     })
     .catch(() => {
@@ -294,7 +294,7 @@ function findDadosByUid(uid) {
       } else {
 
         alert("Documento não encontrado!")
-        window.location.href = 'home.html'
+        window.location.href = 'entregas.html'
 
       }
 
@@ -431,7 +431,7 @@ function removeDados() {
       .then(() => {
 
         hideLoading()
-        window.location.href = 'home.html'
+        window.location.href = 'entregas.html'
 
       })
       .catch(() => {

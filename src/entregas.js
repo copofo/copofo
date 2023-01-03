@@ -71,14 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (changes.type == 'modified') {
 
           console.log('modified')
-          window.location.href = 'ArquivoEntregas.html'
+          window.location.href = 'entregas.html'
         }
 
 
         if (changes.type == 'removed') {
 
           console.log('removed')
-          window.location.href = 'ArquivoEntregas.html'
+          window.location.href = 'entregas.html'
         }
 
 
@@ -108,7 +108,7 @@ function sair() {
 
 
 function addEncomenda() {
-  window.location.href = '../pg/add.html'
+  window.location.href = '../pg/addEntregas.html'
 }
 
 function superUser() {
@@ -225,7 +225,7 @@ function addDadosToScreen(dados) {
     c++;
     if (c >= 3) {
       c = 0
-      window.location.href = 'add.html?uid=' + dados.uid;
+      window.location.href = 'addEntregas.html?uid=' + dados.uid;
     }
   })
 
@@ -236,7 +236,7 @@ function addDadosToScreen(dados) {
   li.addEventListener('dblclick', () => {
 
 
-    window.location.href = 'add.html?uid=' + dados.uid;
+    window.location.href = 'addEntregas.html?uid=' + dados.uid;
 
   })
 

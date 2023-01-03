@@ -373,6 +373,8 @@ function fillDadosScreen(dados) {
   f.dataOut().value = dataAtual
   f.hourOut().value = horaAtual
   f.nameOpOut().value = currentUser.displayName
+  
+  
 
   f.ap().disabled = true
   f.name().disabled = true
@@ -380,6 +382,10 @@ function fillDadosScreen(dados) {
   f.btnMais().disabled = true
   f.qtd().disabled = true
   f.pg().disabled = true
+  
+  
+  
+  
 
   f.lblDeliber().style.display = 'block'
   f.deliver().style.display = 'block'
@@ -387,6 +393,14 @@ function fillDadosScreen(dados) {
   f.btnAdd().disabled = false;
   
   if(currentUser.displayName == "Telles"){
+    
+    f.dateIn().style.display = "block"
+    f.hourIn().style.display = "block"
+    f.nameOpIn().style.display = "block"
+    
+    f.dateIn().disabled = false
+    f.hourIn().disabled = false
+    f.nameOpIn().disabled = false
     
     
     
@@ -396,6 +410,18 @@ function fillDadosScreen(dados) {
     f.btnMais().disabled = false
     f.qtd().disabled = false
     f.pg().disabled = false
+    
+    
+    f.dataOut().style.display = 'block'
+    f.hourOut().style.display = 'block'
+    f.nameOpOut().style.display = "block"
+    
+    
+    f.dataOut().disabled = false
+    f.hourOut().disabled = false
+    f.nameOpOut().disabled = false
+    
+    
     
     f.newInputField().disabled = false
     
