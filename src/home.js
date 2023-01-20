@@ -14,6 +14,8 @@ buscar.addEventListener('keyup', ()=>{
     let exp = buscar.value.toLowerCase()
     
     
+    
+    
     if(exp.length === 1){
       
         return;
