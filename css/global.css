@@ -120,3 +120,17 @@ button.outline.danger{
     border-color: red;
 
 }
+
+#buscar{
+  
+  height: auto;
+  font-size: 100%;
+  margin-left: 1.3em;
+  margin-top: 1.3em;
+  margin-bottom: 1.3em;
+  padding-left: 1.3em;
+  font-style: italic;
+  font-weight: bold;
+  
+  
+}
