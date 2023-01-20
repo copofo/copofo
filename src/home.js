@@ -1,6 +1,63 @@
 var c = 0;
 var pen = 0;
 var ent = 0;
+
+
+/* Buscando */
+
+var input = document.getElementById('buscar')
+var dadosList = document.getElementById('dados')
+
+
+buscar.addEventListener('keyup', ()=>{
+    
+    let exp = buscar.value.toLowerCase()
+    
+    
+    if(exp.length === 1){
+      
+        return;
+      
+    }
+  
+  
+    
+    let pes = dadosList.getElementsByClassName('li-get')
+    
+    
+    
+    for(let pos in pes){
+      
+      if(true === isNaN(pos)){
+        
+        continue;
+        
+      }
+      
+      let conteudoPes = pes[pos].innerHTML.toLowerCase();
+      
+      if(true === conteudoPes.includes(exp)){
+        
+        pes[pos].style.display = "";
+        
+        
+      } else{
+        
+        
+        pes[pos].style.display = "none"
+      }
+      
+      
+    }
+    
+    
+  })
+  
+  
+  /* Fim Buscando */
+
+
+
 var currentUser;
 
 
@@ -215,6 +272,10 @@ function addDadosToScreen(dados) {
   p.innerHTML = `Pendentes: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
 
   const orderList = document.getElementById('dados')
+  
+  
+  
+  
 
 
 
