@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 function voltar() {
-  window.location.href = 'home.html'
+  window.location.href = 'entregas.html'
 }
 
 var currentUser;
