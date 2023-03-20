@@ -164,6 +164,15 @@ f.enDados().addEventListener('touchstart', ()=>{
 })
 
 
+f.enDados().addEventListener('click', ()=>{
+  
+  
+  window.location.href = "entregas.html"
+  
+  
+})
+
+
 
 function sair() {
   firebase.auth().signOut()
