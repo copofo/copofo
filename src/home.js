@@ -295,6 +295,8 @@ function addDadosToScreen(dados) {
   li.classList.add(dados.typeColor, "li-get");
 
   li.ad = dados.uid;
+  
+  /*
 
   li.addEventListener('touchmove', () => {
     c = 0
@@ -311,13 +313,14 @@ function addDadosToScreen(dados) {
     }
   })
 
+*/
 
 
 
 
-  li.addEventListener('dblclick', () => {
+  li.addEventListener('dblclick', (e) => {
 
-
+    e.preventDefault()
     window.location.href = 'add.html?uid=' + dados.uid;
 
   })
