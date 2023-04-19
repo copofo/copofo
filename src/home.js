@@ -3,6 +3,7 @@ var pen = 0;
 var ent = 0;
 
 
+
 /* Buscando */
 
 var input = document.getElementById('buscar')
@@ -106,40 +107,118 @@ document.addEventListener('DOMContentLoaded', () => {
     .collection('home')
     .orderBy('ap')
     .onSnapshot(function (documentos) {
+      
+      
+      /*documentos.docChanges().forEach(function(teste){
+        
+          const doc1 = teste.doc
+
+          const dados1 = {
+
+            ...doc1.data(), uid: doc1.id
+
+          }
+          
+          
+          
+          if(dados1.status === "Entregue" && dados1.countHours === 13){
+            showLoading()
+
+            firebase.firestore()
+              .collection('home')
+              .doc(dados1.uid)
+              .delete()
+              .then(() => {
+          
+                hideLoading()
+                
+          
+              })
+              .catch(() => {
+          
+                hideLoading()
+                alert("Erro ao remover encomenda")
+          
+              })
+                  }
+                
+              }) */
 
       documentos.docChanges().forEach(function (changes) {
-
-        if (changes.type == 'added') {
-
-
-          const doc = changes.doc
+        
+        var intervalID
+        
+        const doc = changes.doc
 
           const dados = {
 
             ...doc.data(), uid: doc.id
 
           }
+        
+        if(dados.status === "Entregue" && dados.countHours === 14){
+            showLoading()
+
+            firebase.firestore()
+              .collection('home')
+              .doc(dados.uid)
+              .delete()
+              .then(() => {
+          
+                hideLoading()
+                window.location.href = "home.html"
+                
+          
+              })
+              .catch(() => {
+          
+                hideLoading()
+                alert("Erro ao remover encomenda")
+          
+              })
+              
+              
+              
+        
+              
+              
+              
+                  
+                
+        }
+        
+        if (changes.type == 'added') {
 
           addDadosToScreen(dados)
-
+          
         }
-
-
-
-
 
         if (changes.type == 'modified') {
 
-          console.log('modified')
-          window.location.href = 'home.html'
+          intervalID = setInterval(()=>{
+            window.location.href = 'home.html'
+            
+          },1500)
+          
+          setTimeout(()=>{
+            clearInterval(intervalID)
+          },1600)
+          
         }
 
 
         if (changes.type == 'removed') {
 
-          console.log('removed')
-          window.location.href = 'home.html'
+          intervalID = setInterval(()=>{
+            window.location.href = 'home.html'
+            
+          },1500)
+          
+          setTimeout(()=>{
+            clearInterval(intervalID)
+          },1600)
         }
+        
 
 
       })
@@ -278,6 +357,13 @@ function addDadosToScreen(dados) {
     pen++;
   }
 
+  for(let i = dados.length; i >= 0; i--){
+    
+    const ent = dados[i]
+    
+    
+    
+  }
 
   const p = document.getElementById('cont')
   p.innerHTML = `Pendentes: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
@@ -436,4 +522,22 @@ function reload() {
 
 
 
+
+function removeDados(dados) {
+
+  
+
+    
+
+    
+
+  
+
+
+
+
+
+
+
+}
 

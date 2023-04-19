@@ -1,5 +1,5 @@
-
 const f = {
+
   ap: () => document.getElementById('ap'),
   name: () => document.getElementById('name'),
   description: () => document.getElementById('description'),
@@ -48,6 +48,9 @@ const hour = f.hourIn()
 const date = f.dateIn()
 
 const d = new Date()
+
+var getHours = d.getHours()
+
 const hora = String(d.getHours()).padStart(2, '0')
 const min = String(d.getMinutes()).padStart(2, '0')
 
@@ -217,7 +220,11 @@ function createDados() {
 
     dateOut: f.deliver().checked ? dataAtual : null,
     hourOut: f.deliver().checked ? horaAtual : null,
-    nameOpOut: f.deliver().checked ? currentUser.displayName : null
+    nameOpOut: f.deliver().checked ? currentUser.displayName : null,
+    
+    countHours: getHours
+    
+    
 
   }
 }
@@ -288,6 +295,7 @@ function findDadosByUid(uid) {
       hideLoading()
 
       if (doc.exists) {
+        
 
         fillDadosScreen(doc.data())
 
@@ -531,3 +539,5 @@ function saveEntrega(dados){
 
 
 */
+
+
