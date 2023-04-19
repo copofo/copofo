@@ -116,40 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .onSnapshot(function (documentos) {
       
       
-      /*documentos.docChanges().forEach(function(teste){
-        
-          const doc1 = teste.doc
-
-          const dados1 = {
-
-            ...doc1.data(), uid: doc1.id
-
-          }
-          
-          
-          
-          if(dados1.status === "Entregue" && dados1.countHours === 13){
-            showLoading()
-
-            firebase.firestore()
-              .collection('home')
-              .doc(dados1.uid)
-              .delete()
-              .then(() => {
-          
-                hideLoading()
-                
-          
-              })
-              .catch(() => {
-          
-                hideLoading()
-                alert("Erro ao remover encomenda")
-          
-              })
-                  }
-                
-              }) */
+      
 
       documentos.docChanges().forEach(function (changes) {
         
@@ -294,68 +261,12 @@ function superUser() {
 }
 
 
-/*
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    finddados(user);
-  }
-})
-*/
 
-
-/*
-
-function Finddados() {
-    showLoading();
-    firebase.firestore()
-        .collection('home')
-        .orderBy('ap')
-        .get() 
-        .then(snapShot => {
-            hideLoading();
-            const dados = snapShot.docs.map(doc => ({
-                ...doc.data(),
-                uid: doc.id
-            }));
-            addDadosToScreen(dados,key)
-        })
-        .catch(error => {
-            hideLoading();
-            console.log(error);
-            alert('erro ao recuperar operações')
-        })
-
-       
-
-}
-*/
 
 
 
 function addDadosToScreen(dados) {
 
-  /*
-
-  var pen = 0;
-  var ent = 0;
-
-
-  dados.forEach((v) => {
-    if (v.status === 'Entregue') {
-      ent++;
-    }
-
-    if (v.status === "Aguardando Retirada") {
-      pen++;
-    }
-  })
-
-
-
-  const p = document.getElementById('cont')
-  p.innerHTML = `Pendentes: ${pen} / Entregues: ${ent} / Total: ${pen + ent}`
-  
-  */
 
 
   if (dados.status === 'Entregue') {
@@ -391,24 +302,7 @@ function addDadosToScreen(dados) {
 
   li.ad = dados.uid;
   
-  /*
 
-  li.addEventListener('touchmove', () => {
-    c = 0
-  })
-
-
-
-  li.addEventListener('touchstart', () => {
-
-    c++;
-    if (c >= 3) {
-      c = 0
-      window.location.href = 'add.html?uid=' + dados.uid;
-    }
-  })
-
-*/
 
 
 
@@ -531,22 +425,4 @@ function reload() {
 
 
 
-
-function removeDados(dados) {
-
-  
-
-    
-
-    
-
-  
-
-
-
-
-
-
-
-}
 
