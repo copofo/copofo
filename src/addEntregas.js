@@ -127,9 +127,9 @@ showLoading();
     } else {
         update(dados);
         
-        if(dados.status == 'Entregue'){
-            saveEntrega(dados);
-        }
+        //if(dados.status == 'Entregue'){
+        //   saveEntrega(dados);
+        //}
     }
 
 
