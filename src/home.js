@@ -2,6 +2,13 @@ var c = 0;
 var pen = 0;
 var ent = 0;
 
+const d = new Date()
+
+var getHours = d.getHours()
+
+var getDate = d.getDate()
+
+
 
 
 /* Buscando */
@@ -155,8 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ...doc.data(), uid: doc.id
 
           }
+          
+          console.log(dados)
         
-        if(dados.status === "Entregue" && dados.countHours === 14){
+        if(dados.status === "Entregue" && getDate > dados.countDate && getHours > 12){
             showLoading()
 
             firebase.firestore()

@@ -51,6 +51,8 @@ const d = new Date()
 
 var getHours = d.getHours()
 
+var getDate = d.getDate()
+
 const hora = String(d.getHours()).padStart(2, '0')
 const min = String(d.getMinutes()).padStart(2, '0')
 
@@ -222,7 +224,9 @@ function createDados() {
     hourOut: f.deliver().checked ? horaAtual : null,
     nameOpOut: f.deliver().checked ? currentUser.displayName : null,
     
-    countHours: getHours
+    countHours: getHours,
+    
+    countDate: getDate
     
     
 
