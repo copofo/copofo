@@ -268,7 +268,7 @@ function createDados() {
     
     barcode: f.barcode().value,
     
-    recebedor: f.deliver().checked ? f.recebedor().value : null
+    recebedor: f.deliver().checked ? f.recebedor().value : ""
     
     
     
@@ -376,7 +376,11 @@ function fillDadosScreen(dados) {
   }
   
   f.recebedor().style.display = "block"
-  f.lblRecebedor().styledisplay = "block"
+  
+  
+  f.lblRecebedor().style.display = "block"
+  
+  f.recebedor().value = dados.recebedor
 
   f.ap().value = dados.ap
   f.name().value = dados.name
