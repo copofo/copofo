@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
           
           
         
-        if(dados.status === "Entregue" && getDate > dados.countDate && getHours >= 12){
+        if(dados.status === "Entregue" && getDate > dados.countDate && getHours >= 7){
             showLoading()
 
             firebase.firestore()
