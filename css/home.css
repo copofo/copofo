@@ -224,7 +224,7 @@ li.deliver:hover{
     .li-get {
         border: 0.09em solid black;
         width: 90%;
-        height: 15em;
+        height: auto;
         margin-bottom: 0.50em;
         background-color: white;
         padding: 0.50em;

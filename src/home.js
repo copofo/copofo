@@ -130,9 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
           }
           
-          console.log(dados)
+          
         
-        if(dados.status === "Entregue" && getDate > dados.countDate && getHours > 12){
+        if(dados.status === "Entregue" && getDate > dados.countDate && getHours >= 12){
             showLoading()
 
             firebase.firestore()
@@ -336,6 +336,14 @@ function addDadosToScreen(dados) {
     description.innerHTML = formatDescription(dados.description)
     li.appendChild(description)
   }
+  
+  if(dados.barcode){
+    
+    const barcode = document.createElement('p')
+    barcode.innerHTML = "BarCode: " + dados.barcode
+    li.appendChild(barcode)
+    
+  }
 
   if (dados.pg) {
 
@@ -347,26 +355,38 @@ function addDadosToScreen(dados) {
 
   if (dados.dateIn) {
     const dateIn = document.createElement('p')
-    dateIn.innerHTML = "Recebimento: " + dados.dateIn
+    dateIn.innerHTML = "Recebimento: " + dados.dateIn + " - " + dados.hourIn
     li.appendChild(dateIn)
   }
-
+  
+/*
   if (dados.hourIn) {
     const hourIn = document.createElement('p')
     hourIn.innerHTML = dados.hourIn
     li.appendChild(hourIn)
   }
 
+  
+
   if (dados.nameOpIn) {
     const nameOpIn = document.createElement('p')
     nameOpIn.innerHTML = "Operador: " + dados.nameOpIn;
     li.appendChild(nameOpIn)
   }
+  
+  */
 
   if (dados.status) {
     const status = document.createElement('p')
     status.innerHTML = "Status: " + dados.status
     li.appendChild(status)
+  }
+  
+  
+  if(dados.recebedor){
+    const recebedor = document.createElement('p')
+    recebedor.innerHTML = "Recebedor: " + dados.recebedor
+    li.appendChild(recebedor)
   }
   
 
@@ -375,15 +395,20 @@ function addDadosToScreen(dados) {
 
   if (dados.dateOut) {
     const dateOut = document.createElement('p')
-    dateOut.innerHTML = dados.dateOut
+    dateOut.innerHTML = dados.dateOut + " - " + dados.hourOut
     li.appendChild(dateOut)
   }
-
+  
+  
+  /*
+  
   if (dados.hourOut) {
     const hourOut = document.createElement('p')
     hourOut.innerHTML = dados.hourOut
     li.appendChild(hourOut)
   }
+  
+  
 
   if (dados.nameOpOut) {
     const nameOpOut = document.createElement('p')
@@ -391,7 +416,7 @@ function addDadosToScreen(dados) {
     li.appendChild(nameOpOut)
   }
 
-
+  */
 
   orderList.appendChild(li);
 
@@ -418,11 +443,5 @@ function formatDate(date) {
 function reload() {
   window.location.reload = true;
 }
-
-
-
-
-
-
 
 

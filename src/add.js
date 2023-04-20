@@ -27,8 +27,46 @@ const f = {
   nameOpOut: () => document.getElementById('nameOpOut'),
 
   lblDeliber: () => document.getElementById('lblDeliber'),
-  lblReceive: () => document.getElementById('lblReceive')
+  lblReceive: () => document.getElementById('lblReceive'),
+  
+  ler: () => document.getElementById('ler'),
+  
+  barcode: () => document.getElementById('barcode'),
+  
+  recebedor: () => document.getElementById('recebedor'),
+  
+  lblRecebedor: () => document.getElementById('lblRecebedor')
 }
+
+
+var scanner = new Html5QrcodeScanner('reader', {
+qrbox: {
+width: 250,
+height: 250,
+},
+fps: 20,
+});
+
+
+f.ler().addEventListener('click',(e)=>{
+  scanner.render(success, error);
+    function success(result) {
+  f.barcode().value = result
+
+
+  scanner.clear();
+  document.getElementById('reader').remove();
+}
+})
+
+
+
+
+
+function error(err) {
+console.error(err);
+}
+
 
 var newInputField = document.getElementById('newInputField')
 
@@ -214,7 +252,7 @@ function createDados() {
       qtd: parseInt(f.qtd().value)
     },
     
-    pg: parseInt(f.pg().value),
+    pg: f.pg().value,
     dateIn: f.dateIn().value,
     hourIn: f.hourIn().value,
     nameOpIn: userName.value,
@@ -226,7 +264,13 @@ function createDados() {
     
     countHours: getHours,
     
-    countDate: getDate
+    countDate: getDate,
+    
+    barcode: f.barcode().value,
+    
+    recebedor: f.deliver().checked ? f.recebedor().value : null
+    
+    
     
     
 
@@ -330,12 +374,19 @@ function fillDadosScreen(dados) {
     f.deliver().checked = true
 
   }
+  
+  f.recebedor().style.display = "block"
+  f.lblRecebedor().styledisplay = "block"
 
   f.ap().value = dados.ap
   f.name().value = dados.name
   
   
   f.qtd().value = dados.description.qtd
+  
+  f.barcode().value = dados.barcode
+  
+  f.barcode().disabled = true
   
   
   f.description().value = dados.description.tipo
@@ -406,9 +457,9 @@ function fillDadosScreen(dados) {
   
   if(currentUser.displayName == "Telles"){
     
-    f.dateIn().style.display = "block"
-    f.hourIn().style.display = "block"
-    f.nameOpIn().style.display = "block"
+    //f.dateIn().style.display = "block"
+    //f.hourIn().style.display = "block"
+    //f.nameOpIn().style.display = "block"
     
     f.dateIn().disabled = false
     f.hourIn().disabled = false
@@ -424,9 +475,9 @@ function fillDadosScreen(dados) {
     f.pg().disabled = false
     
     
-    f.dataOut().style.display = 'block'
-    f.hourOut().style.display = 'block'
-    f.nameOpOut().style.display = "block"
+    //f.dataOut().style.display = 'block'
+    //f.hourOut().style.display = 'block'
+    //f.nameOpOut().style.display = "block"
     
     
     f.dataOut().disabled = false
@@ -436,6 +487,7 @@ function fillDadosScreen(dados) {
     
     
     f.newInputField().disabled = false
+    f.barcode().disabled = false
     
     f.lblReceive().style.display = "block"
     

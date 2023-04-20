@@ -8,9 +8,32 @@
     <title>Add Encomenda</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/add.css">
+    
+    
+    
+<style>
+
+main {
+display: flex;
+flex-direction: column;
+justify-content: center;
+position: absolute;
+}
+
+#reader {
+width: 340px;
+}
+
+
+</style>
+
+
 </head>
 
 <body style="display: none;">
+  
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  
     <div id="lbl"></div>
     <div><button type="button" class="vl fab" onclick="voltar()">&#8631;</button></div>
 
@@ -58,13 +81,21 @@
                     
                     
                 </div>
+                
+                <div><label for="barcode">BarCode:</label></div>
+                <input type="text" id="barcode"><button type="button" id="ler" style="width:32.5px; height:32.5px;">Ler</button>
 
 
                 <div><label for="qtd">Qtd:</label><input type="number" id="qtd" onchange="fillError()"></div>
+                
+                
+                
             </div>
+                
+                
 
             <div><label for="pg"></label>Página:</div>
-            <input type="number" id="pg" onkeypress="fillPg()">
+            <input type="text" id="pg" onkeypress="fillPg()">
 
             <div style="display: none;"><label for="dateIn"></label>Data do Recebimento</div>
             <input type="text" id="dateIn" disabled style="display: none;">
@@ -85,6 +116,10 @@
             <label id='lblDeliber' for="deliver" style="display: none;">Entregar</label>
 
             <input type="radio" name="status" id="deliver" disabled style="display: none;">
+            
+            <div><label style="display: none" id="lblRecebedor" for="recebedor">Recebedor:</label></div>
+            
+            <input style="display:none" type="text" id="recebedor">
 
 
             <!-- Dados entrega-->
@@ -120,6 +155,13 @@
             </div>
 
         </form>
+        
+        <main>
+  
+          <div id="reader"></div>
+          
+        
+        </main>
 
 
     </div>
