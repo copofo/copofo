@@ -1,6 +1,6 @@
 [{
         "relation": ["delegate_permission/common.handle_all_urls"],
-        "target" : { "namespace": "android_app", "package_name": "app.web.bancodedados_93e8f.twa",
-                     "sha256_cert_fingerprints": ["87:F6:07:4B:3E:D5:AD:F0:AE:E7:E2:65:07:CF:5A:AA:6E:44:58:80:EE:01:02:0A:87:90:42:F8:FB:19:17:0D"] }
+        "target" : { "namespace": "android_app", "package_name": "app.netlify.tellesjr_triohome.twa",
+                     "sha256_cert_fingerprints": ["01:B9:71:94:72:44:AC:5E:6A:C2:38:56:5A:46:8A:55:0B:B9:3D:CB:C8:88:96:F2:6C:77:EA:39:10:7B:D9:C2"] }
       }
 ]
