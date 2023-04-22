@@ -1,3 +1,4 @@
+/*
 div.centralize{
     height: 100%;
     
@@ -54,12 +55,14 @@ button[disabled]{
 
 
 
+
+
 h1{
     margin-bottom: -2em;
     text-align: center;
-    /* margin-top: 2em; */
+    
     color: white;
-    /* background-image: radial-gradient(var(--corA), var(--corE)); */
+
     background-image: radial-gradient(var(--c3), var(--c7));
     text-shadow: 0 0 0 0.2em black;
 }
@@ -74,3 +77,96 @@ form{
     border-radius: 0.5em;
 }
 
+*/
+
+
+:root{
+
+    --cor1: #262223;
+    --cor2: #F2F2F2;
+    --cor3: #F2A81D;
+    --cor4: #F2BB16;
+    --cor5: #F2E8B3;
+
+
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    background-color: #F2E8B3;
+}
+
+
+.img{
+    
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin: auto;
+    background-color: transparent;
+}
+
+
+
+.form{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.815);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(var(--cor3),var(--cor4));
+    border-radius: 15px;
+    
+}
+
+.btn{
+    
+    
+    margin-top: 10px;
+    text-align: center;
+}
+
+input{
+    height: 50px;
+    width: 250px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+button{
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: var(--cor1);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    box-shadow: 0px 5px 0px 0px #161414;
+}
+
+button:active{
+    position: relative;
+    top: 5px;
+    box-shadow: none;
+}
+
+label{
+    color: #262223;
+    font-weight: bolder;
+    font-size: 20px;
+    color: black;
+    text-shadow: 1px 1px 1px white, -1px 1px 1px white, 1px -1px 1px white, -1px -1px 1px white;
+}

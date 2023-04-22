@@ -20,22 +20,24 @@
 
 <body onload="checkLogin()">
     <div id="lbl"></div>
-    <h1>TrioHome</h1>
-    <div class="centralize">
+    <div class="img"><img src="img/logo5.png" alt="logo"></div>
+    <div class="form">
 
-        <form>
-            <div><label for="email">Email</label></div>
-            <input type="email" id="email">
-            <div class="error" id="msg-email-error">&uarr; Email é obrigatório / Email Inválido</div>
 
-            <div><label for="password">Senha</label></div>
-            <input type="password" id="password">
-            <div class="error" id="msg-password-error">&uarr; Senha é Obrigatória</div>
+        <div class="divForm">
+            <form>
+                <div><label for="email">Email</label></div>
+                <input type="email" id="email">
+                <div class="error" id="msg-email-error">&uarr; Email é obrigatório / Email Inválido</div>
+                <div><label for="password">Senha</label></div>
+                <input type="password" id="password">
+                <div class="error" id="msg-password-error">&uarr; Senha é Obrigatória</div>
+                <div id="msgErrorLogin" class="error">testando</div>
+                <div class="centralize"><button type="button" id="btn" disabled onclick="login()">Entrar</button></div>
+            </form>
+        </div>
 
-            <div id="msgErrorLogin" class="error">testando</div>
 
-            <div class="centralize"><button type="button" id="btn" disabled onclick="login()">Entrar</button></div>
-        </form>
     </div>
 
 
