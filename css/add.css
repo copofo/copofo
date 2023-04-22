@@ -64,7 +64,8 @@ button.vl:hover{
     top: 2em;
     left: 0;
     background-color: transparent;
-    color: hsl(0, 0, 14%);
+    color: hsl(0, 0%, 64%);
+    border: none;
 
 }
 
@@ -93,3 +94,11 @@ input{
     top: 5px;
     box-shadow: none;
 }
+
+#receive, #deliver{
+    
+    height: 20px;
+    width: 20px;
+    box-shadow: none;
+}
+

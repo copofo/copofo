@@ -36,7 +36,7 @@ width: 340px;
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   
     <div id="lbl"></div>
-    <div><button type="button" class="vl fab" onclick="voltar()">&#8631;</button></div>
+    <div><button type="button" class="vl fab" id="voltarH"  onclick="voltar()">&#8631;</button></div>
 
     <h1 class="h1Style add">Receber Encomenda</h1>
     <div id="error" class="error" style="margin-top: 1em; margin-bottom: -1em;">Erro ao receber encomenda!</div>
@@ -111,7 +111,8 @@ width: 340px;
 
             <label for="receive" style="display: none;" id="lblReceive">Pendente</label>
 
-            <input type="radio" name="status" id="receive" checked style="display: none;">
+            <input type="radio" name="status" id="receive" checked style="display: none;"
+            >
 
 
             <label id='lblDeliber' for="deliver" style="display: none;">Entregar</label>
@@ -151,7 +152,7 @@ width: 340px;
                 </div>
 
                 <div class="divCentralize"><button type="button" id="btnRemove" onclick="removeDados()"
-                        >Remover</button>
+                        >X</button>
                 </div>
             </div>
 
