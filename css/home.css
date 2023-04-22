@@ -9,7 +9,11 @@
 
 }
 
-
+.li-get{
+    box-shadow: 0 0 5px black;
+    margin: 10px;
+    border-radius: 5px;
+}
 
 
 * {
