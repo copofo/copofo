@@ -21,7 +21,7 @@
 }
 
 body {
-    background-color: #CCCCFF;
+    background-color: #F2E8B3;
     height: 100vh;
     background-attachment: fixed;
     font-family: Sans-Serif;
@@ -82,8 +82,8 @@ button.fab.top {
     
     text-align: center;
     color: white;
-    background-image: radial-gradient(var(--c3), var(--c7));
-    text-shadow: 0 0 0 0.2em black;
+    background-color: black;
+    text-shadow: 0 0 0 0.2em white;
 }
 
 .error{
@@ -135,3 +135,4 @@ button.outline.danger{
   
   
 }
+

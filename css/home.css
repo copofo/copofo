@@ -1,3 +1,17 @@
+:root{
+
+    --cor1: #262223;
+    --cor2: #F2F2F2;
+    --cor3: #F2A81D;
+    --cor4: #F2BB16;
+    --cor5: #F2E8B3;
+
+
+}
+
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +37,7 @@ a {
     height: 4.375em;
     padding: 1em;
     justify-content: space-between;
-    background-image: linear-gradient(to right, var(--c7), var(--c5));
+    background-color: black
 
 }
 
@@ -48,39 +62,39 @@ a {
 
 
 li.receive{
-    border-left: 2.5em solid red;
+    border-left: 10px solid rgb(73, 0, 0);
 }
 
 li.receive:hover{
-  width: 95%;
-  border-right: 2.5em solid red;
-  border-bottom: 1.5em solid rgb(175, 000, 000);
-  border-top: 1.5em solid rgb(175, 000, 000);
-  color: white;
   
-  background: rgba(000,000,200,0.5);
+  border-right: 1px solid rgb(73, 0, 0);
+  border-bottom: 1px solid rgb(73, 000, 000);
+  border-top: 1px solid rgb(73, 000, 000);
+  color: black;
+  
+  background: hsl(0, 0%, 85%);
+  
 }
 
 li.deliver{
-    border-left: 2.5em solid green;
+    border-left: 10px solid rgb(0, 73, 0);
 }
 
 li.deliver:hover{
-  border-right: 2.5em solid green;
-  
-  width: 95%;
-  border-bottom: 1.5em solid rgb(000, 175, 000);
-  border-top: 1.5em solid rgb(000, 175, 000);
-  height: 18em;
-  color: white;
-  
-  background: rgba(000,000,200,0.5);
+    border-right: 1px solid green;
+    border-bottom: 1px solid rgb(000, 175, 000);
+    border-top: 1px solid rgb(000, 175, 000);
+    color: black;
+    
+    
+    background: hsl(0, 0%, 85%);
 }
 
 #cont{
     text-align: center;
-    color: var(--c8);
+    color: black;
     font-weight: bold;
+    padding: 10px;
 }
 
 
@@ -146,6 +160,11 @@ li.deliver:hover{
     }
 }
 
+
+
+
+
+
 @media(max-width:600px) {
     #btn-menu {
         display: block;
@@ -157,7 +176,7 @@ li.deliver:hover{
         width: 100%;
         top: 4.375em;
         right: 0;
-        background: var(--c2);
+        background: hsl(0, 0%, 85%);
         height: 0px;
         transition: .6s;
         visibility: hidden;
@@ -226,7 +245,7 @@ li.deliver:hover{
         width: 90%;
         height: auto;
         margin-bottom: 0.50em;
-        background-color: white;
+        background-color: var(--cor2);
         padding: 0.50em;
     }
     
@@ -254,7 +273,7 @@ ul > li:hover{
   
   
   
-  color: white;
+  color: black;
   
   font-weight: bolder;
   
@@ -266,4 +285,8 @@ ul > li:hover{
 }
 
 
-
+#buscar{
+    outline: none;
+    padding: 5px;
+    box-shadow: 0 0 0 black;
+}

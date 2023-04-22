@@ -160,8 +160,9 @@ window.addEventListener('keypress', function (e) {
 
 function saveDados() {
   
-  
-showLoading();
+const intervalID = setInterval(()=>{
+
+  showLoading();
     const dados = createDados();
 
     if(isNewDados()){
@@ -174,6 +175,10 @@ showLoading();
             saveEntrega(dados);
         }
     }
+
+
+  },1000)
+
 
 
 
