@@ -49,7 +49,8 @@ width: 340px;
             <input type="number" id="ap" onchange="fillError()">
 
             <div><label for="name"></label>Nome:</div>
-            <input type="text" id="name" onchange="fillError()">
+            
+            <input type="text" id="name" onchange="fillError()" autocomplete="off">
 
             <div>
                 <label for="description">Descrição:</label>
@@ -84,7 +85,8 @@ width: 340px;
                 </div>
                 
                 <div><label for="barcode">BarCode:</label></div>
-                <input type="text" id="barcode"><button type="button" id="ler" style="width:32.5px; height:32.5px;">Ler</button>
+                
+                <input type="text" id="barcode" autocomplete="off"><button type="button" id="ler" style="width:32.5px; height:32.5px;">Ler</button>
 
 
                 <div><label for="qtd">Qtd:</label><input type="number" id="qtd" onchange="fillError()"></div>
@@ -96,12 +98,15 @@ width: 340px;
                 
 
             <div><label for="pg"></label>Página:</div>
-            <input type="text" id="pg" onkeypress="fillPg()">
+            
+            <input type="text" id="pg" onkeypress="fillPg()" autocomplete="off">
 
             <div style="display: none;"><label for="dateIn"></label>Data do Recebimento</div>
+            
             <input type="text" id="dateIn" disabled style="display: none;">
 
             <div style="display: none;"><label for="hourIn"></label>Horo do Recebimento</div>
+            
             <input type="text" id="hourIn" disabled style="display: none;">
 
             <div style="display: none;"><label for="nameOpIn"></label>Nome do Operador</div>
