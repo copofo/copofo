@@ -191,7 +191,7 @@ function save(dados) {
     .add(dados)
     .then(() => {
       hideLoading();
-      window.location.href = '../index.html'
+      window.location.href = 'home.html'
     })
     .catch(() => {
       f.msgError().style.display = 'block'
