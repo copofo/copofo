@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
               .then(() => {
           
                 hideLoading()
-                window.location.href = "home.html"
+            
                 
           
               })
@@ -174,11 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
           intervalID = setInterval(()=>{
             window.location.href = 'home.html'
             
-          },1500)
+          },3000)
           
           setTimeout(()=>{
             clearInterval(intervalID)
-          },1600)
+          },3200)
           
         }
 
@@ -188,11 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
           intervalID = setInterval(()=>{
             window.location.href = 'home.html'
             
-          },1500)
+          },3000)
           
           setTimeout(()=>{
             clearInterval(intervalID)
-          },1600)
+          },3200)
         }
         
 
