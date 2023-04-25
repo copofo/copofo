@@ -17,13 +17,11 @@ window.addEventListener('DOMContentLoaded', checkLogin)
 
 
 function checkLogin(){
-  showLoading()
+  
   firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             window.location.href = "pg/home.html"
             
-        } else{
-          hideLoading()
         }
     })
 }
