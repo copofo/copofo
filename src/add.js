@@ -289,7 +289,7 @@ function createDados() {
 
   }
 }
-
+/*
 function fillError() {
   const name = f.name().value
   const ap = f.ap().value
@@ -298,12 +298,12 @@ function fillError() {
   const qdt = f.qtd().value
   const barcode = f.barcode().value
   const recebedor = f.recebedor().value
-  f.msgFillError().style.display = !ap || !name || !pg || !desc || !qdt || !barcode || !recebedor ? 'block' : 'none';
+  f.msgFillError().style.display = !ap || !name || !pg || !desc || !qdt ? 'block' : 'none';
 
-  f.btnAdd().disabled = !ap || !name || !pg || !desc || !qdt || !barcode || !recebedor ? true : false;
+  f.btnAdd().disabled = !ap || !name || !pg || !desc || !qdt ? true : false;
 }
 
-
+*/
 
 function addField() {
   if (f.description().value == "Descrever ➔") {
@@ -316,11 +316,13 @@ function addField() {
 
 }
 
+
+/*
 function fillPg() {
   f.btnAdd().disabled = !f.pg().value ? true : false;
   f.msgFillError().style.display = !f.pg().value ? 'block' : 'none';
 }
-
+*/
 
 // Atualizar Operação
 
@@ -616,10 +618,10 @@ function saveEntrega(dados){
 */
 
 
-f.recebedor().addEventListener('onblur',(e)=>{
+f.recebedor().addEventListener('touchend',(e)=>{
   e.preventDefault()
 
-  fillError()
+  f.btnAdd().disabled = false
   
   
   
