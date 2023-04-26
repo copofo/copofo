@@ -171,28 +171,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (changes.type == 'modified') {
 
-          intervalID = setInterval(()=>{
+          //intervalID = setInterval(()=>{
             window.location.href = 'home.html'
             
-          },3000)
+          //},3000)
           
-          setTimeout(()=>{
-            clearInterval(intervalID)
-          },3200)
+          //setTimeout(()=>{
+            //clearInterval(intervalID)
+          //},3200)
           
         }
 
 
         if (changes.type == 'removed') {
 
-          intervalID = setInterval(()=>{
+          //intervalID = setInterval(()=>{
             window.location.href = 'home.html'
             
-          },3000)
+          //},3000)
           
-          setTimeout(()=>{
-            clearInterval(intervalID)
-          },3200)
+          //setTimeout(()=>{
+           // clearInterval(intervalID)
+          //},3200)
         }
         
 
