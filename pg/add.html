@@ -86,7 +86,7 @@ width: 340px;
                 
                 <div><label for="barcode">BarCode:</label></div>
                 
-                <input type="text" id="barcode" autocomplete="off"><button type="button" id="ler" style="width:32.5px; height:32.5px;">Ler</button>
+                <input type="text" id="barcode" autocomplete="off" onchange="fillError()"><button type="button" id="ler" style="width:32.5px; height:32.5px;">Ler</button>
 
 
                 <div><label for="qtd">Qtd:</label><input type="number" id="qtd" onchange="fillError()"></div>
@@ -126,7 +126,7 @@ width: 340px;
             
             <div><label style="display: none" id="lblRecebedor" for="recebedor">Recebedor:</label></div>
             
-            <input style="display:none" type="text" id="recebedor">
+            <input style="display:none" type="text" id="recebedor" onchange="fillError()">
 
 
             <!-- Dados entrega-->

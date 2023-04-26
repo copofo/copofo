@@ -104,7 +104,15 @@ const ano = String(d.getFullYear())
 const dataAtual = `${dia}/${mes}/${ano}`
 date.value = dataAtual
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', (e) => {
+  
+  
+  e.preventDefault()
+  
+  const ver = e.type
+  
+  
+  console.log(ver)
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -288,9 +296,11 @@ function fillError() {
   const pg = f.pg().value
   const desc = f.description().value
   const qdt = f.qtd().value
-  f.msgFillError().style.display = !ap || !name || !pg || !desc || !qdt ? 'block' : 'none';
+  const barcode = f.barcode().value
+  const recebedor = f.recebedor().value
+  f.msgFillError().style.display = !ap || !name || !pg || !desc || !qdt || !barcode || !recebedor ? 'block' : 'none';
 
-  f.btnAdd().disabled = !ap || !name || !pg || !desc || !qdt ? true : false;
+  f.btnAdd().disabled = !ap || !name || !pg || !desc || !qdt || !barcode || !recebedor ? true : false;
 }
 
 
@@ -606,3 +616,12 @@ function saveEntrega(dados){
 */
 
 
+f.recebedor().addEventListener('onblur',(e)=>{
+  e.preventDefault()
+
+  fillError()
+  
+  
+  
+  
+})
