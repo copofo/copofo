@@ -106,13 +106,7 @@ date.value = dataAtual
 
 window.addEventListener('DOMContentLoaded', (e) => {
   
-  
-  e.preventDefault()
-  
-  const ver = e.type
-  
-  
-  console.log(ver)
+
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -265,7 +259,7 @@ function createDados() {
       qtd: parseInt(f.qtd().value)
     },
     
-    pg: f.pg().value,
+    pg: parseInt(f.pg().value),
     dateIn: f.dateIn().value,
     hourIn: f.hourIn().value,
     nameOpIn: userName.value,
@@ -289,7 +283,7 @@ function createDados() {
 
   }
 }
-/*
+
 function fillError() {
   const name = f.name().value
   const ap = f.ap().value
@@ -303,7 +297,7 @@ function fillError() {
   f.btnAdd().disabled = !ap || !name || !pg || !desc || !qdt ? true : false;
 }
 
-*/
+
 
 function addField() {
   if (f.description().value == "Descrever ➔") {
@@ -317,12 +311,12 @@ function addField() {
 }
 
 
-/*
+
 function fillPg() {
   f.btnAdd().disabled = !f.pg().value ? true : false;
   f.msgFillError().style.display = !f.pg().value ? 'block' : 'none';
 }
-*/
+
 
 // Atualizar Operação
 
@@ -618,12 +612,3 @@ function saveEntrega(dados){
 */
 
 
-f.recebedor().addEventListener('touchend',(e)=>{
-  e.preventDefault()
-
-  f.btnAdd().disabled = false
-  
-  
-  
-  
-})

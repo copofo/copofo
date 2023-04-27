@@ -99,7 +99,7 @@ width: 340px;
 
             <div><label for="pg"></label>Página:</div>
             
-            <input type="text" id="pg" onkeypress="fillPg()" autocomplete="off">
+            <input type="number" id="pg" onkeypress="fillPg()" autocomplete="off">
 
             <div style="display: none;"><label for="dateIn"></label>Data do Recebimento</div>
             
@@ -153,7 +153,7 @@ width: 340px;
                 <div class="error" id="msg-fill-error">&uarr; Preencha todos os campos</div>
 
                 <div class="divCentralize"><button type="button" id="btnAdd" onclick="saveDados()"
-                        >Concluir</button>
+                        disabled>Concluir</button>
                 </div>
 
                 <div class="divCentralize"><button type="button" id="btnRemove" onclick="removeDados()"
