@@ -153,6 +153,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 })
 
+
 window.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     f.btnAdd().click();
@@ -160,9 +161,10 @@ window.addEventListener('keypress', function (e) {
 })
 
 
+
 function saveDados() {
   
-const intervalID = setInterval(()=>{
+
 
   showLoading();
     const dados = createDados();
@@ -177,9 +179,6 @@ const intervalID = setInterval(()=>{
             saveEntrega(dados);
         }
     }
-
-
-  },1000)
 
 
 

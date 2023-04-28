@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
           
         
         if(dados.status === "Entregue" && getDate > dados.countDate && getHours >= 7){
-            showLoading()
+            
 
             firebase.firestore()
               .collection('home')
@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
               .delete()
               .then(() => {
           
-                hideLoading()
             
                 
           
@@ -154,13 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
               })
               
               
-              
-        
-              
-              
-              
-                  
-                
         }
         
         if (changes.type == 'added') {
@@ -171,28 +163,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (changes.type == 'modified') {
 
-          //intervalID = setInterval(()=>{
+          intervalID = setInterval(()=>{
             window.location.href = 'home.html'
             
-          //},3000)
+          },3000)
           
-          //setTimeout(()=>{
-            //clearInterval(intervalID)
-          //},3200)
+          setTimeout(()=>{
+            clearInterval(intervalID)
+          },3200)
           
         }
 
 
         if (changes.type == 'removed') {
 
-          //intervalID = setInterval(()=>{
+          intervalID = setInterval(()=>{
             window.location.href = 'home.html'
             
-          //},3000)
+          },3000)
           
-          //setTimeout(()=>{
-           // clearInterval(intervalID)
-          //},3200)
+          setTimeout(()=>{
+           clearInterval(intervalID)
+          },3200)
         }
         
 
