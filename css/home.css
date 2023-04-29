@@ -9,11 +9,9 @@
 
 }
 
-.li-get{
-    box-shadow: 0 0 5px black;
-    margin: 10px;
-    border-radius: 5px;
-}
+
+
+
 
 
 * {
@@ -29,6 +27,21 @@ a {
 }
 
 
+.li-get {
+        border: 0.09em solid black;
+        width: 90%;
+        height: auto;
+        margin-bottom: 0.50em;
+        background-color: var(--cor2);
+        padding: 0.50em;
+        box-shadow: 0 0 5px black;
+        margin: 10px;
+        border-radius: 5px;
+}
+
+
+
+
 
 #logo {
     font-size: 1.5em;
@@ -41,7 +54,7 @@ a {
     height: 4.375em;
     padding: 1em;
     justify-content: space-between;
-    background-color: black
+    background-color: black;
 
 }
 
@@ -54,6 +67,7 @@ a {
 #menu li {
     display: block;
     padding: .5em;
+    color: white;
   
 }
 
@@ -199,6 +213,7 @@ li.deliver:hover{
         padding: 1em 0;
         margin: 0 1em;
         border-bottom: 2px solid rgba(0, 0, 0, .05);
+        color: black;
 
     }
 
@@ -243,15 +258,8 @@ li.deliver:hover{
         transform: rotate(-135deg);
         top: -7px;
     }
-
-    .li-get {
-        border: 0.09em solid black;
-        width: 90%;
-        height: auto;
-        margin-bottom: 0.50em;
-        background-color: var(--cor2);
-        padding: 0.50em;
-    }
+    
+    
     
     
     
@@ -263,6 +271,8 @@ li.deliver:hover{
         margin-top: 0.50em;
     }
 }
+
+
 
 button.danger{
 
