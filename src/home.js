@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           
           
-        
+        /*
         if(dados.status === "Entregue" && getDate > dados.countDate && getHours >= 7){
             
 
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
               
               
         }
-        
+        */
         if (changes.type == 'added') {
 
           addDadosToScreen(dados)
