@@ -129,8 +129,39 @@ document.addEventListener('DOMContentLoaded', () => {
             ...doc.data(), uid: doc.id
 
           }
+        
+        /* --------- Regrass---------  */
+        
+        /* Pendentes */
+        
+        /*
+        if(dados.status === "Aguardando Retirada"){
+            
+
+            firebase.firestore()
+              .collection('home')
+              .doc(dados.uid)
+              .delete()
+              .then(() => {
           
+            
+                
           
+              })
+              .catch(() => {
+          
+                hideLoading()
+                alert("Erro ao remover encomenda")
+          
+              })
+              
+              
+        }
+        
+        */
+        
+        /* Entregues */
+        
         /*
         if(dados.status === "Entregue" && getDate > dados.countDate && getHours >= 7){
             
@@ -154,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
               
               
         }
-        */
+    */
         if (changes.type == 'added') {
 
           addDadosToScreen(dados)
