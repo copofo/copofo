@@ -133,9 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
         /* --------- Regrass---------  */
         
         /* Pendentes */
+      
+      /*
         
-        /*
-        if(dados.status === "Aguardando Retirada"){
+        if(dados.status === "Entregue" ){
             
 
             firebase.firestore()
@@ -158,11 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
               
         }
         
-        */
+        
         
         /* Entregues */
-        
         /*
+        
         if(dados.status === "Entregue" && getDate > dados.countDate && getHours >= 7){
             
 

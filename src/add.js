@@ -35,10 +35,11 @@ const f = {
   
   recebedor: () => document.getElementById('recebedor'),
   
-  lblRecebedor: () => document.getElementById('lblRecebedor')
+  lblRecebedor: () => document.getElementById('lblRecebedor'),
+  
 }
 
-
+/*
 var scanner = new Html5QrcodeScanner('reader', {
 qrbox: {
 width: 250,
@@ -66,6 +67,44 @@ f.ler().addEventListener('click',(e)=>{
 function error(err) {
 console.error(err);
 }
+
+*/
+
+var scanner = null; // Variável global para manter a referência ao leitor
+
+function startScanner() {
+  scanner = new Html5QrcodeScanner('reader', {
+    qrbox: {
+      width: 250,
+      height: 250,
+    },
+    fps: 20,
+  });
+
+  scanner.render(success, error);
+}
+
+function stopScanner() {
+  if (scanner) {
+    scanner.clear();
+    scanner.stop();
+    scanner = null;
+    document.getElementById('reader').remove();
+  }
+}
+let countBarcode =0
+function success(result) {
+  countBarcode++
+  f.barcode().value += "(" + countBarcode + "°) "+ result + " ";
+  stopScanner();
+}
+
+function error(err) {
+  console.error(err);
+}
+
+document.getElementById('ler').addEventListener('click', startScanner);
+document.getElementById('stopButton').addEventListener('click', stopScanner);
 
 
 var newInputField = document.getElementById('newInputField')
