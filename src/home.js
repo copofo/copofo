@@ -342,7 +342,7 @@ function addDadosToScreen(dados) {
 
   if (dados.ap) {
     const ap = document.createElement('p')
-    ap.innerHTML = `<strong>Ap: ${dados.ap}<strong>`
+    ap.innerHTML = `<strong>Casa: ${dados.ap}<strong>`
     li.appendChild(ap)
 
   }
@@ -368,7 +368,7 @@ function addDadosToScreen(dados) {
     li.appendChild(barcode)
     
   }
-
+/*
   if (dados.pg) {
 
     const pg = document.createElement('p')
@@ -376,7 +376,7 @@ function addDadosToScreen(dados) {
     li.appendChild(pg)
 
   }
-
+  
   if (dados.dateIn) {
     const dateIn = document.createElement('p')
     dateIn.innerHTML = "Recebimento: " + dados.dateIn + " - " + dados.hourIn

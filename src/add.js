@@ -3,7 +3,7 @@ const f = {
   ap: () => document.getElementById('ap'),
   name: () => document.getElementById('name'),
   description: () => document.getElementById('description'),
-  pg: () => document.getElementById('pg'),
+  /*pg: () => document.getElementById('pg'),*/
   dateIn: () => document.getElementById('dateIn'),
   hourIn: () => document.getElementById('hourIn'),
   nameOpIn: () => document.getElementById('nameOpIn'),
@@ -297,7 +297,7 @@ function createDados() {
       qtd: parseInt(f.qtd().value)
     },
     
-    pg: parseInt(f.pg().value),
+    /*pg: parseInt(f.pg().value),*/
     dateIn: f.dateIn().value,
     hourIn: f.hourIn().value,
     nameOpIn: userName.value,
@@ -325,14 +325,14 @@ function createDados() {
 function fillError() {
   const name = f.name().value
   const ap = f.ap().value
-  const pg = f.pg().value
+  /*const pg = f.pg().value*/
   const desc = f.description().value
   const qdt = f.qtd().value
   const barcode = f.barcode().value
   const recebedor = f.recebedor().value
-  f.msgFillError().style.display = !ap || !name || !pg || !desc || !qdt ? 'block' : 'none';
+  f.msgFillError().style.display = !ap || !name /*|| !pg*/ || !desc || !qdt ? 'block' : 'none';
 
-  f.btnAdd().disabled = !ap || !name || !pg || !desc || !qdt ? true : false;
+  f.btnAdd().disabled = !ap || !name /*|| !pg*/ || !desc || !qdt ? true : false;
 }
 
 
@@ -348,13 +348,13 @@ function addField() {
 
 }
 
-
+/*
 
 function fillPg() {
   f.btnAdd().disabled = !f.pg().value ? true : false;
   f.msgFillError().style.display = !f.pg().value ? 'block' : 'none';
 }
-
+*/
 
 // Atualizar Operação
 
@@ -480,7 +480,7 @@ function fillDadosScreen(dados) {
   
   
   
-  f.pg().value = dados.pg
+  /*f.pg().value = dados.pg*/
   f.dateIn().value = dados.dateIn
   f.hourIn().value = dados.hourIn
   f.nameOpIn().value = dados.nameOpIn
@@ -497,7 +497,7 @@ function fillDadosScreen(dados) {
   f.description().disabled = true
   f.btnMais().disabled = true
   f.qtd().disabled = true
-  f.pg().disabled = true
+  /*f.pg().disabled = true*/
   
   
   
@@ -525,7 +525,7 @@ function fillDadosScreen(dados) {
     f.description().disabled = false
     f.btnMais().disabled = false
     f.qtd().disabled = false
-    f.pg().disabled = false
+    /*f.pg().disabled = false*/
     
     
     //f.dataOut().style.display = 'block'
