@@ -376,7 +376,7 @@ function addDadosToScreen(dados) {
     li.appendChild(pg)
 
   }
-  
+  */
   if (dados.dateIn) {
     const dateIn = document.createElement('p')
     dateIn.innerHTML = "Recebimento: " + dados.dateIn + " - " + dados.hourIn

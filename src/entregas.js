@@ -141,6 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('removed')
           window.location.href = 'entregas.html'
         }
+        
+          
 
 
       })
