@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         /* Pendentes */
       
-      /*
+      
         
         if(dados.status === "Entregue" ){
             
